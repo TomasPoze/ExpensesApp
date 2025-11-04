@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesApp.MAUI", "ExpensesApp.MAUI\ExpensesApp.MAUI.csproj", "{9FD1E91F-6A2C-47F1-815C-F2ED056152B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesApp.Core", "ExpensesApp.Core\ExpensesApp.Core.csproj", "{51BB6FA2-3A94-4253-B0BA-DFDE52CE6EA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FD1E91F-6A2C-47F1-815C-F2ED056152B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD1E91F-6A2C-47F1-815C-F2ED056152B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD1E91F-6A2C-47F1-815C-F2ED056152B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD1E91F-6A2C-47F1-815C-F2ED056152B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51BB6FA2-3A94-4253-B0BA-DFDE52CE6EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51BB6FA2-3A94-4253-B0BA-DFDE52CE6EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51BB6FA2-3A94-4253-B0BA-DFDE52CE6EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51BB6FA2-3A94-4253-B0BA-DFDE52CE6EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
