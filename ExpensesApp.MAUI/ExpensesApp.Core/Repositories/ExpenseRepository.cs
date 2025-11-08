@@ -6,7 +6,7 @@ namespace ExpensesApp.Core.Repositories;
 public class ExpenseRepository
 {
     private static readonly string FilePath =
-        Path.Combine(Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName, "data",
+        Path.Combine(Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName, "Data",
             "expenses.txt");
 
 

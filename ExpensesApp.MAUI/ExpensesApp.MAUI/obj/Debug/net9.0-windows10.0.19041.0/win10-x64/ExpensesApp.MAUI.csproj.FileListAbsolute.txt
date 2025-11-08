@@ -513,3 +513,9 @@ C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\ExpensesApp.MAUI.sourcelink.json
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Mvvm.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\ExpensesApp.Core.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\ExpensesApp.Core.pdb
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\user.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\user.scale-100.png

@@ -44,6 +44,17 @@ public class ExpenseController
         _service.AddExpenses(expense);
     }
 
+    public async Task AddExpenseAsync(string category, string amountInput, string description)
+    {
+        await Task.Run(() =>
+        {
+            decimal.TryParse(amountInput, out var amount);
+            var expense = new Expense(DateTime.Now, category, amount, description);
+            _service.AddExpenses(expense);
+            AddExpense(category, amountInput, description);
+        });
+    }
+
     public (bool Success, string Message) EditExpense(int id, string category, string amountInput, string description)
     {
         bool edited = _service.EditExpense(id, category, amountInput, description);

@@ -2,8 +2,29 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpensesApp.MAUI.Pages.AddExpensePage">
+             xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
+             x:Class="ExpensesApp.MAUI.Pages.AddExpensePage"
+             x:DataType="pageModels:AddExpensePageModel">
     <ContentPage.Content>
-        
+        <VerticalStackLayout>
+            <Label Text="Add Expense"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Category" />
+            <Entry Text="{Binding Category}" Placeholder="Enter category" />
+
+            <Label Text="Amount" />
+            <Entry Text="{Binding Amount}" Placeholder="Enter Amount" />
+
+            <Label Text="Description" />
+            <Entry Text="{Binding Description}" Placeholder="Enter Description" />
+
+            <Button Text="Add Expense"
+                    Command="{Binding AddExpenseCommand}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>

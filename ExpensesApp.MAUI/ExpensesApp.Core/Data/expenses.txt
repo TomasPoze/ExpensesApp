@@ -1,0 +1,3 @@
+﻿2025-10-16|Maistas|11.89|Kebabas
+2025-10-16|Transportas|49.45|Kuras
+2025-08-06|Maistas|11.89|Kebabas

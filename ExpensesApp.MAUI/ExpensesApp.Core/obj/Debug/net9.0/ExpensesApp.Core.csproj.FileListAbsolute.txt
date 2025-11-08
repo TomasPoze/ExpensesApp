@@ -1,0 +1,13 @@
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\bin\Debug\net9.0\ExpensesApp.Core.deps.json
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\bin\Debug\net9.0\ExpensesApp.Core.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\bin\Debug\net9.0\ExpensesApp.Core.pdb
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.csproj.AssemblyReference.cache
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.AssemblyInfoInputs.cache
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.AssemblyInfo.cs
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.sourcelink.json
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\refint\ExpensesApp.Core.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ExpensesApp.Core.pdb
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.Core\obj\Debug\net9.0\ref\ExpensesApp.Core.dll

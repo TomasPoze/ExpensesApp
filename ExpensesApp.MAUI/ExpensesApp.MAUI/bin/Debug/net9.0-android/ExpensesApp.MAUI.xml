@@ -4,11 +4,115 @@
         <name>ExpensesApp.MAUI</name>
     </assembly>
     <members>
+        <member name="T:ExpensesApp.MAUI.PageModels.AddExpensePageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Category">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._category"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Amount">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._amount"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Description">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._description"/>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.addExpenseCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseAsync"/>.</summary>
+        </member>
+        <member name="T:ExpensesApp.MAUI.PageModels.MainPageModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Today">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._today"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Expenses">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._expenses"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.TotalAmount">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._totalAmount"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.ExpenseCount">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._expenseCount"/>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.MainPageModel.goToAddExpenseCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseAsync"/>.</summary>
+        </member>
+        <member name="T:ExpensesApp.MAUI.ViewModels.HeaderViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:ExpensesApp.MAUI.ViewModels.HeaderViewModel.openProfileCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.ViewModels.HeaderViewModel.OpenProfileCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.ViewModels.HeaderViewModel.OpenProfileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.ViewModels.HeaderViewModel.OpenProfile"/>.</summary>
+        </member>
         <member name="T:ExpensesApp.MAUI.Resource">
             <summary>
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Amount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Amount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Today">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Today" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Expenses">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Expenses" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExpenseCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExpenseCount" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Category">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Category" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Amount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Amount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Today">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Today" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Expenses">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Expenses" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExpenseCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExpenseCount" generated properties.</summary>
         </member>
     </members>
 </doc>

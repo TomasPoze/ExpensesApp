@@ -1,22 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExpensesApp.MAUI.Pages.MainPage">
+             xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
+             xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
+             xmlns:views="clr-namespace:ExpensesApp.MAUI.Views"
+             x:Class="ExpensesApp.MAUI.Pages.MainPage"
+             x:DataType="pageModels:MainPageModel">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Label Text="Expenses Tracker"
-               FontSize="28"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
+    <Grid RowDefinitions="Auto,*">
+        <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
 
-        <Button Text="Add Expense"
-                Clicked="OnAddExpenseClicked"/>
 
-        <Button Text="View All Expenses"
-                Clicked="OnViewExpensesClicked"/>
+        <ScrollView Grid.Row="1" x:Name="MainScrollView" Scrolled="MainScrollView_Scrolled">
+            <VerticalStackLayout Padding="20" Spacing="15">
 
-        <Button Text="Export to CSV"
-                Clicked="OnExportClicked"/>
-    </VerticalStackLayout>
+                <Label Text="Expenses Tracker"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Today}"
+                       FontSize="18"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Income Spent:" FontSize="16" />
+                <Label Text="{Binding TotalAmount, StringFormat='{}{0:C}'}"
+                       FontSize="20"
+                       TextColor="Green"
+                       HorizontalOptions="Start" />
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 
 </ContentPage>

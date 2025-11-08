@@ -305,3 +305,8 @@ C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-ios\iossimulator-x64\ExpensesApp.MAUI.pdb
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-ios\iossimulator-x64\ExpensesApp.MAUI.genruntimeconfig.cache
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-ios\iossimulator-x64\ref\ExpensesApp.MAUI.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-ios\iossimulator-x64\ExpensesApp.MAUI.sourcelink.json
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-ios\iossimulator-x64\CommunityToolkit.Mvvm.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-ios\iossimulator-x64\ExpensesApp.Core.dll
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-ios\iossimulator-x64\ExpensesApp.Core.pdb
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\user.png

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
+             xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
+             x:Class="ExpensesApp.MAUI.Pages.ExpensesPage"
+             x:DataType="pageModels:MainPageModel">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <Label Text="Expenses Tracker"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Today}"
+                       FontSize="18"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Total amount spent:" FontSize="16" />
+                <Label Text="{Binding TotalAmount, StringFormat='{}{0:C}'}"
+                       FontSize="20"
+                       TextColor="Green"
+                       HorizontalOptions="Start" />
+
+                <Button Text="Add New Expense"
+                        Command="{Binding GoToAddExpenseCommand}" />
+
+                <Label Text="All Expenses:" FontAttributes="Bold" FontSize="16" />
+
+                <!-- Šitas pagaliau rodys sąrašą -->
+                <CollectionView ItemsSource="{Binding Expenses}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Expense">
+                            <Border BackgroundColor="LightGray"
+                                    StrokeShape="RoundRectangle 8"
+                                    Padding="10"
+                                    Margin="0,5">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Category}" FontAttributes="Bold" FontSize="16" />
+                                    <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
+                                    <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}"
+                                           TextColor="DarkBlue" FontSize="14" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+                <Label Text="{Binding ExpenseCount, StringFormat='Expenses: {0}'}"
+                       FontSize="14"
+                       HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ExpensesApp.MAUI.ViewModels"
+             x:Class="ExpensesApp.MAUI.Views.HeaderView"
+             x:DataType="viewModels:HeaderViewModel"
+             >
+    <Grid BackgroundColor="#00C28B" Padding="12" HeightRequest="60">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ImageButton 
+            Source="user.png"
+            Aspect="AspectFit"
+            WidthRequest="32"
+            Height="18"
+            BackgroundColor="Transparent"
+            Command="{Binding OpenProfileCommand}"
+            VerticalOptions="Center"/>
+
+        <Label 
+            Grid.Column="1"
+            Text="Expenses Tracker"
+            TextColor="White"
+            FontAttributes="Bold"
+            FontSize="18"
+            VerticalOptions="Center"
+            HorizontalOptions="End"/>
+    </Grid>
+</ContentView>
