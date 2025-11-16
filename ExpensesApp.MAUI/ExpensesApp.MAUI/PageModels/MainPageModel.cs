@@ -13,12 +13,13 @@ namespace ExpensesApp.MAUI.PageModels;
 
 public partial class MainPageModel : ObservableObject
 {
-    private readonly ExpenseController _expenseController;
+    private readonly AccountController _accountController;
 
-    public MainPageModel(ExpenseController controller)
+    public MainPageModel(AccountController accountController)
     {
-        _expenseController = controller;
-        LoadExpenses();
+        _accountController = accountController;
+        //LoadExpenses();
+        Accounts = new ObservableCollection<Account>(_accountController.GetAllAccounts());
     }
 
     [ObservableProperty] private string _today = DateTime.Today.ToString("dddd, dd MMMM yyyy");
@@ -26,7 +27,7 @@ public partial class MainPageModel : ObservableObject
     [ObservableProperty] private decimal _totalAmount;
     [ObservableProperty] private int _expenseCount;
 
-    private void LoadExpenses()
+    /*private void LoadExpenses()
     {
         var all = _expenseController.GetAllExpenses();
 
@@ -42,15 +43,24 @@ public partial class MainPageModel : ObservableObject
         TotalAmount = all.Sum(x => x.Amount);
         ExpenseCount = Expenses.Count;
     }
-    
+*/
     [RelayCommand]
     private async Task GoToAddExpenseAsync()
     {
         await Shell.Current.GoToAsync(nameof(AddExpensePage));
     }
+    
+    [ObservableProperty] private ObservableCollection<Account> _accounts;
+    [RelayCommand]
+    private async Task AddAccount()
+    {
+        // čia kol kas paprastai – pridėkim fiktyvią paskyrą testavimui
+        Accounts.Add(new Account("Test", Currency.EUR, 0, 0));
+    }
+
 
     public void RefreshExpenses()
     {
-        LoadExpenses();
+       // LoadExpenses();
     }
 }

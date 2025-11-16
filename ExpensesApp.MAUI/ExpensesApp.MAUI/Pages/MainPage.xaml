@@ -6,20 +6,48 @@
              xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
              xmlns:views="clr-namespace:ExpensesApp.MAUI.Views"
              x:Class="ExpensesApp.MAUI.Pages.MainPage"
-             x:DataType="pageModels:MainPageModel">
+             x:DataType="pageModels:MainPageModel"
+             BackgroundColor="#111111"
+             >
 
     <Grid RowDefinitions="Auto,*">
         <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
 
+        
 
         <ScrollView Grid.Row="1" x:Name="MainScrollView" Scrolled="MainScrollView_Scrolled">
             <VerticalStackLayout Padding="20" Spacing="15">
 
-                <Label Text="Expenses Tracker"
-                       FontSize="28"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center" />
+                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#222" Padding="15" Margin="0,10">
+                    <VerticalStackLayout>
+                        <Label Text="Accounts" FontSize="20" FontAttributes="Bold" TextColor="White" />
 
+                        <CollectionView ItemsSource="{Binding Accounts}" Margin="0,5">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Account">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <Label Text="{Binding AccountName}" TextColor="White" FontSize="16"/>
+                                        <Label Text="{Binding Balance, StringFormat='{0} €'}" 
+                                               TextColor="White" FontSize="16" 
+                                               HorizontalOptions="End" Grid.Column="1"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Button Text="+ Add Account"
+                                Command="{Binding AddAccountCommand}"
+                                BackgroundColor="#444"
+                                TextColor="White"
+                                CornerRadius="10"
+                                FontSize="14"
+                                Padding="8,4"
+                                HorizontalOptions="Center"
+                                Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                
                 <Label Text="{Binding Today}"
                        FontSize="18"
                        HorizontalOptions="Center" />

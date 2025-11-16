@@ -1,6 +1,7 @@
 ﻿using ExpensesApp.Core.Controllers;
 using ExpensesApp.Core.Repositories;
 using ExpensesApp.Core.Services;
+using ExpensesApp.Core.Validators;
 using ExpensesApp.MAUI.PageModels;
 using ExpensesApp.MAUI.Pages;
 using Microsoft.Extensions.Logging;
@@ -27,6 +28,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<AddExpensePageModel>();
         builder.Services.AddSingleton<AddExpensePage>();
+        builder.Services.AddSingleton<AccountRepository>();
+        builder.Services.AddSingleton<AccountService>();
+        builder.Services.AddSingleton<AccountValidator>();
+        builder.Services.AddSingleton<AccountController>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
