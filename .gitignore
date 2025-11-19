@@ -1,0 +1,75 @@
+# Build folders
+bin/
+obj/
+artifacts/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# MAUI Generated Files
+**/Resources/Raw/*.*
+**/Resources/AppIcon/*.*
+**/Resources/Splash/*.*
+**/Platforms/*/Resources/*
+**/Platforms/*/bin/
+**/Platforms/*/obj/
+
+# Android
+*.apk
+*.aab
+*.keystore
+*.keystore.*
+*.jks
+*.dex
+*.class
+
+# Android Gradle
+.gradle/
+local.properties
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+gradle/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# User-specific configuration
+*.env
+*.local
+
+# Packaging
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Maui cache
+*.mauiasset
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Generated app settings
+appsettings.Development.json
+appsettings.Local.json
