@@ -20,7 +20,14 @@ public partial class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _viewModel.RefreshExpenses();
+        //_viewModel.RefreshExpenses();
+    }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        if(BindingContext is MainPageModel vm)
+            vm.RefreshAccounts();
     }
 
     private void MainScrollView_Scrolled(object sender, ScrolledEventArgs e)

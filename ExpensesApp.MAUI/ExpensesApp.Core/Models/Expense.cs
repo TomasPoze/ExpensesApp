@@ -7,6 +7,7 @@ public class Expense
     private static int _counter = 1;
     
     public int Id { get; }
+    public int AccountId { get; set; }
     public DateTime Date { get; set; }
     public string Category { get; set; }
     public decimal Amount { get; set; }

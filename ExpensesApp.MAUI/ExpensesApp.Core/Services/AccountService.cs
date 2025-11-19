@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using ExpensesApp.Core.Models;
 using ExpensesApp.Core.Repositories;
 using ExpensesApp.Core.Validators;
@@ -10,15 +11,46 @@ public class AccountService
     private List<Account> _accounts;
     private AccountValidator _accountValidator;
     private readonly AccountRepository _accountRepository;
+    private readonly IAccountRepository _repo;
+    
 
-    public AccountService(AccountValidator accountValidator, AccountRepository accountRepository)
+    public AccountService(AccountValidator accountValidator, AccountRepository accountRepository, IAccountRepository repo)
     {
         _accountValidator = accountValidator;
         _accountRepository = accountRepository;
-        var (accounts, errors) = _accountRepository.LoadFromFile();
-        _accounts = accounts;
+        _repo = repo;
+        _accounts = _repo.Load();
+        
+        Debug.WriteLine("Loading accounts JSON...");
+
+        var (acc, errors) = _accountRepository.LoadFromFile();
+
+        if (acc == null)
+        {
+            Debug.WriteLine("CRITICAL: accounts == null");
+        }
+
+        Debug.WriteLine("Loaded count: " + acc.Count);
+        if (errors.Count > 0)
+        {
+            Debug.WriteLine("Errors loading accounts:");
+            foreach (var e in errors) Debug.WriteLine(e);
+        }
+
     }
 
+    public (bool Success, string Message) AddExpenseToAccount(int accountId, Expense expense)
+    {
+        var acc = _accounts.FirstOrDefault(x => x.Id == accountId);
+        if (acc == null)
+            return (false, "Account not found");
+        
+        acc.Expenses.Add(expense);
+        acc.UpdatedAt = DateTime.Now;
+        _repo.Save(_accounts);
+        return (true, "Expense added");
+    }
+    
     public (bool Success, string Message) AddAccount(Account account)
     {
         var validation = _accountValidator.ValidateAccount((account));
@@ -27,7 +59,7 @@ public class AccountService
         _accounts.Add(account);
         try
         {
-            _accountRepository.SaveToFile(_accounts);
+            _repo.Save(_accounts);
         }
         catch (Exception ex)
         {
@@ -64,7 +96,7 @@ public class AccountService
         acc.Currency = updatedAccount.Currency;
         acc.Balance = updatedAccount.Balance;
         acc.UpdatedAt = DateTime.Now;
-        _accountRepository.SaveToFile(_accounts);
+        _repo.Save(_accounts);
         return (true, "Account updated successfully");
     }
 
@@ -74,7 +106,7 @@ public class AccountService
         if (acc == null)
             return (false, "Account not found");
         _accounts.Remove(acc);
-        _accountRepository.SaveToFile(_accounts);
+        _repo.Save(_accounts);
         return (true, "Account deleted successfully");
     }
 }

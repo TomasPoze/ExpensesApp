@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
+             x:Class="ExpensesApp.MAUI.Pages.AddAccountPage"
+             x:DataType="pageModels:AddAccountPageModel">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Label Text="Add Expense"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Account name" />
+            <Entry Text="{Binding Name}" Placeholder="Enter category" />
+
+            <Label Text="Currency" />
+            <Entry Text="{Binding Currency}" Placeholder="Enter Currency" />
+
+            <Label Text="Balance" />
+            <Entry Text="{Binding Balance}" Placeholder="Enter Balance" />
+            
+            <Label Text="Monthly Income" />
+            <Entry Text="{Binding MonthlyIncome}" Placeholder="Enter Monthly Income" />
+
+            <Button Text="Add Account"
+                    Command="{Binding SaveCommand}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

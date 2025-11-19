@@ -12,10 +12,12 @@ public class Account
     public decimal? MonthlyIncome { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
-
-
-    public List<Expense> Expenses { get; } = new();
-
+    
+    public List<Expense> Expenses { get; set; } = new();
+    public List<Transaction> Transactions { get; set; } = new();
+    
+    public Account() {}
+    
     public Account(string accountName, Currency currency, decimal balance, decimal monthlyIncome)
     {
         
@@ -27,6 +29,8 @@ public class Account
         CreatedAt = DateTime.Now;
     }
 }
+
+
 
 public enum Currency
 {

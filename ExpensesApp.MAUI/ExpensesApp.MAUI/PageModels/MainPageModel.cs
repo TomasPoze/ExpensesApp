@@ -8,7 +8,6 @@ using ExpensesApp.Core.Services;
 using ExpensesApp.MAUI.Pages;
 
 
-
 namespace ExpensesApp.MAUI.PageModels;
 
 public partial class MainPageModel : ObservableObject
@@ -23,9 +22,11 @@ public partial class MainPageModel : ObservableObject
     }
 
     [ObservableProperty] private string _today = DateTime.Today.ToString("dddd, dd MMMM yyyy");
-    [ObservableProperty] private ObservableCollection<Expense> _expenses;
     [ObservableProperty] private decimal _totalAmount;
-    [ObservableProperty] private int _expenseCount;
+    [ObservableProperty] private decimal _totalMonthlyIncome;
+    [ObservableProperty] private decimal _spentThisMonth;
+    [ObservableProperty] private double _incomeProgress;
+
 
     /*private void LoadExpenses()
     {
@@ -44,23 +45,33 @@ public partial class MainPageModel : ObservableObject
         ExpenseCount = Expenses.Count;
     }
 */
+
+    private void UpdateIncomeSummary()
+    {
+        var TotalMonthlyIncome = Accounts?.Sum(x => x.MonthlyIncome) ?? 0;
+        // var SpentThisMonth = _accountController
+    }
+
     [RelayCommand]
     private async Task GoToAddExpenseAsync()
     {
         await Shell.Current.GoToAsync(nameof(AddExpensePage));
     }
-    
+
     [ObservableProperty] private ObservableCollection<Account> _accounts;
+
     [RelayCommand]
     private async Task AddAccount()
     {
         // čia kol kas paprastai – pridėkim fiktyvią paskyrą testavimui
-        Accounts.Add(new Account("Test", Currency.EUR, 0, 0));
+        await Shell.Current.GoToAsync(nameof(AddAccountPage));
     }
 
 
-    public void RefreshExpenses()
+    public void RefreshAccounts()
     {
-       // LoadExpenses();
+        var list = _accountController.GetAllAccounts();
+        Accounts = new ObservableCollection<Account>(list);
+        // LoadExpenses();
     }
 }
