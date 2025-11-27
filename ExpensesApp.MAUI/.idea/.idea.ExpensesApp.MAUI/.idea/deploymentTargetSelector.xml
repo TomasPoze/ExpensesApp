@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="ExpensesApp.MAUI">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-11-09T15:47:08.665555700Z">
+        <DropdownSelection timestamp="2025-11-19T20:57:39.855083600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\tomas\.android\avd\s25.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Tomas\.android\avd\S25_plus.avd" />
             </handle>
           </Target>
         </DropdownSelection>

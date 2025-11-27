@@ -56,14 +56,8 @@
         <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.TotalAmount">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._totalAmount"/>
         </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.TotalMonthlyIncome">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._totalMonthlyIncome"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.SpentThisMonth">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._spentThisMonth"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.IncomeProgress">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._incomeProgress"/>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.SpendingCategories">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._spendingCategories"/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Accounts">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._accounts"/>
@@ -128,14 +122,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalAmount">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalMonthlyIncome">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalMonthlyIncome" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SpentThisMonth">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SpentThisMonth" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IncomeProgress">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IncomeProgress" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SpendingCategories">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Accounts">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Accounts" generated properties.</summary>
@@ -173,14 +161,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalAmount">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalMonthlyIncome">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalMonthlyIncome" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SpentThisMonth">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SpentThisMonth" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IncomeProgress">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IncomeProgress" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SpendingCategories">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Accounts">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Accounts" generated properties.</summary>

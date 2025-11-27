@@ -493,7 +493,8 @@
       },
       "ExpensesApp.Core/1.0.0": {
         "dependencies": {
-          "CommunityToolkit.Mvvm": "8.4.0"
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Microsoft.Maui.Graphics": "9.0.111"
         },
         "runtime": {
           "ExpensesApp.Core.dll": {
