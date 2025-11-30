@@ -1,39 +1,105 @@
-﻿namespace ExpensesApp.MAUI.Drawables;
+﻿using ExpensesApp.Core.Models;
 
 public class PieChartDrawable : IDrawable
 {
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        float[] testValues = { 25, 25, 50 };
-        float total = testValues.Sum();
-        float startAngle = 90;
-        var progressAngle = total / 100;
-        var endAngle = startAngle - (int)Math.Round(progressAngle * 360, MidpointRounding.AwayFromZero);
+        // 1. YOUR VALUES
+        float[] values = { 36, 25, 25, 74 };
+        float total = values.Sum();
 
-        var centerX = dirtyRect.Width / 2;
-        var centerY = dirtyRect.Height / 2;
-        var radius = dirtyRect.Width / 2;
+        // 2. SETUP GEOMETRY
+        float scale = 0.80f;
+        // I removed 'leftShift' because it was pushing the chart off-center, 
+        // causing labels to potentially clip or look weird.
+        float radius = (Math.Min(dirtyRect.Width, dirtyRect.Height) * scale) / 2f;
+        
+        float centerX = dirtyRect.Center.X; 
+        float centerY = dirtyRect.Center.Y;
 
+        float startAngle = -90f;
 
-        for (int i = 0; i < testValues.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
-            progressAngle = testValues[i] / total * 360f;
-            endAngle += startAngle+progressAngle;
-            if (i == 0) canvas.FillColor = Colors.Red;
-            else if (i == 1) canvas.FillColor = Colors.Green;
-            else canvas.FillColor = Colors.Blue;
-            canvas.DrawCircle(centerX, centerY, radius);
+            float value = values[i];
+            float percentage = value / total;
+            float sweep = percentage * 360f;
+            float endAngle = startAngle + sweep;
+
+            // --- DRAW SLICE (Your original logic) ---
             var path = new PathF();
             path.MoveTo(centerX, centerY);
-            path.AddArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle, endAngle, true);
+
+            // Reverted to 'false' since that worked for your shape
+            path.AddArc(
+                centerX - radius,
+                centerY - radius,
+                centerX + radius,
+                centerY + radius,
+                startAngle,
+                endAngle,
+                false 
+            );
+
             path.LineTo(centerX, centerY);
-            path.AddArc(centerX, centerY, 200, 200, startAngle, endAngle, true);
+
+            canvas.FillColor = GetColorForIndex(i);
             canvas.FillPath(path);
 
+            canvas.StrokeColor = Color.FromArgb("#222"); // Dark border
+            canvas.StrokeSize = 2;
+            canvas.DrawPath(path);
 
-            canvas.DrawArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle, endAngle, true,
-                false);
-            startAngle += progressAngle;
+            // --- FIXED TEXT DRAWING ---
+            
+            // 1. Calculate precise mid-angle
+            float midAngle = startAngle + (sweep / 2);
+
+            // 2. Convert to Radians
+            float rad = midAngle * (float)(Math.PI / 180.0f);
+
+            // 3. Calculate Position (55% from center looks best)
+            float textDistance = radius * 0.55f; 
+            float textX = centerX + textDistance * (float)Math.Cos(rad);
+            float textY = centerY + textDistance * (float)Math.Sin(rad);
+
+            canvas.FontSize = 14;
+            canvas.FontColor = Colors.White;
+            string label = $"{percentage * 100:F0}%";
+            
+            // 4. THE FIX: Center the text box on the point
+            // We define a box of 60x30
+            float boxWidth = 60;
+            float boxHeight = 30;
+
+            // We subtract half the width/height from the coordinates
+            // This ensures 'textX' is the dead-center of the text, not the top-left
+            canvas.DrawString(
+                label, 
+                textX - (boxWidth / 2), 
+                textY - (boxHeight / 2), 
+                boxWidth, 
+                boxHeight, 
+                HorizontalAlignment.Center, 
+                VerticalAlignment.Center
+            );
+
+            // Advance
+            startAngle += sweep;
         }
+    }
+
+    private static readonly Color[] Palette = new[]
+    {
+        Color.FromArgb("#4CC9F0"),
+        Color.FromArgb("#4895EF"),
+        Color.FromArgb("#560BAD"),
+        Color.FromArgb("#F72585"),
+        Color.FromArgb("#2A9D8F"),
+    };
+
+    private Color GetColorForIndex(int i)
+    {
+        return Palette[i % Palette.Length];
     }
 }

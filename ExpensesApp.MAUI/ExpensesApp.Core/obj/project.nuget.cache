@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "amlZtKU2qQ8=",
+  "dgSpecHash": "VXM2iR4zqVw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
+  "projectFilePath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Tomas\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\Tomas\\.nuget\\packages\\microsoft.maui.graphics\\9.0.111\\microsoft.maui.graphics.9.0.111.nupkg.sha512"
+    "C:\\Users\\tomas\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\tomas\\.nuget\\packages\\microsoft.maui.graphics\\9.0.111\\microsoft.maui.graphics.9.0.111.nupkg.sha512"
   ],
   "logs": []
 }

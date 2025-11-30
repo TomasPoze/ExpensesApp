@@ -1,5 +1,4 @@
-﻿using ExpensesApp.MAUI.Drawables;
-
+﻿
 namespace ExpensesApp.MAUI.Views;
 
 public partial class PieChartView : ContentView
