@@ -1,105 +1,149 @@
 ﻿using ExpensesApp.Core.Models;
 
+
 public class PieChartDrawable : IDrawable
 {
+    private readonly Func<IEnumerable<SpendingCategory>> _itemsAccessor;
+
+
+    public PieChartDrawable(Func<IEnumerable<SpendingCategory>> itemsAccessor)
+    {
+        _itemsAccessor = itemsAccessor;
+    }
+
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        // 1. YOUR VALUES
-        float[] values = { 36, 25, 25, 74 };
-        float total = values.Sum();
+        // ---------- DUOMENŲ GAUTIMAS ----------
 
-        // 2. SETUP GEOMETRY
-        float scale = 0.80f;
-        // I removed 'leftShift' because it was pushing the chart off-center, 
-        // causing labels to potentially clip or look weird.
-        float radius = (Math.Min(dirtyRect.Width, dirtyRect.Height) * scale) / 2f;
-        
-        float centerX = dirtyRect.Center.X; 
-        float centerY = dirtyRect.Center.Y;
+        // --- JEI NORI TEST VALUES, ATSIRAKINK ŠITĄ ---
+        float[] testValues = { 20, 40, 60, 80 };
+        var items = testValues
+            .Select((v, i) => new SpendingCategory($"Cat {i + 1}", (decimal)v, GetColorForIndex(i)))
+            .ToList();
+
+        // --- REALŪS DUOMENYS IŠ SpendingCategories ---
+        var src = _itemsAccessor?.Invoke() ?? Enumerable.Empty<SpendingCategory>();
+        /*var items = src
+            .Where(x => x.Amount > 0)
+            .ToList();
+*/
+        if (!items.Any())
+            return;
+
+        float total = (float)items.Sum(x => x.Amount);
+
+
+        float radius = Math.Min(dirtyRect.Width, dirtyRect.Height) * 0.8f / 2f;
+
+        float cx = dirtyRect.Center.X;
+        float cy = dirtyRect.Center.Y;
+
 
         float startAngle = -90f;
 
-        for (int i = 0; i < values.Length; i++)
+
+        var labels = new List<(float x, float y, float percentage)>();
+
+        // mažiausias kampas, nuo kurio rodome procentą
+        const float MinLabelAngle = 18f; // ~5% apskritimo
+
+
+        for (int i = 0; i < items.Count; i++)
         {
-            float value = values[i];
-            float percentage = value / total;
-            float sweep = percentage * 360f;
-            float endAngle = startAngle + sweep;
+            var item = items[i];
+            float value = (float)item.Amount;
+            float pct = value / total;
+            float sweep = pct * 360f;
 
-            // --- DRAW SLICE (Your original logic) ---
-            var path = new PathF();
-            path.MoveTo(centerX, centerY);
 
-            // Reverted to 'false' since that worked for your shape
-            path.AddArc(
-                centerX - radius,
-                centerY - radius,
-                centerX + radius,
-                centerY + radius,
-                startAngle,
-                endAngle,
-                false 
+            var slicePath = CreateSlicePath(cx, cy, radius, startAngle, sweep);
+
+
+            canvas.FillColor = item.Color ?? GetColorForIndex(i);
+            canvas.FillPath(slicePath);
+
+            canvas.StrokeColor = Colors.Black;
+            canvas.StrokeSize = 2;
+            canvas.DrawPath(slicePath);
+
+            // label position
+            if (sweep >= MinLabelAngle)
+            {
+                float midAngle = startAngle + sweep / 2f;
+                float rad = midAngle * (float)Math.PI / 180f;
+
+                float labelR = radius * 0.55f;
+                float lx = cx + (float)Math.Cos(rad) * labelR;
+                float ly = cy + (float)Math.Sin(rad) * labelR;
+
+                labels.Add((lx, ly, pct));
+            }
+
+            startAngle += sweep;
+        }
+
+        canvas.FontColor = Colors.White;
+        canvas.FontSize = 14;
+
+
+        foreach (var label in labels)
+        {
+            string txt = $"{label.percentage * 100:F0}%";
+
+            float boxW = 40;
+            float boxH = 24;
+
+            var rect = new RectF(
+                label.x - boxW / 2f,
+                label.y - boxH / 2f,
+                boxW,
+                boxH
             );
 
-            path.LineTo(centerX, centerY);
-
-            canvas.FillColor = GetColorForIndex(i);
-            canvas.FillPath(path);
-
-            canvas.StrokeColor = Color.FromArgb("#222"); // Dark border
-            canvas.StrokeSize = 2;
-            canvas.DrawPath(path);
-
-            // --- FIXED TEXT DRAWING ---
-            
-            // 1. Calculate precise mid-angle
-            float midAngle = startAngle + (sweep / 2);
-
-            // 2. Convert to Radians
-            float rad = midAngle * (float)(Math.PI / 180.0f);
-
-            // 3. Calculate Position (55% from center looks best)
-            float textDistance = radius * 0.55f; 
-            float textX = centerX + textDistance * (float)Math.Cos(rad);
-            float textY = centerY + textDistance * (float)Math.Sin(rad);
-
-            canvas.FontSize = 14;
-            canvas.FontColor = Colors.White;
-            string label = $"{percentage * 100:F0}%";
-            
-            // 4. THE FIX: Center the text box on the point
-            // We define a box of 60x30
-            float boxWidth = 60;
-            float boxHeight = 30;
-
-            // We subtract half the width/height from the coordinates
-            // This ensures 'textX' is the dead-center of the text, not the top-left
             canvas.DrawString(
-                label, 
-                textX - (boxWidth / 2), 
-                textY - (boxHeight / 2), 
-                boxWidth, 
-                boxHeight, 
-                HorizontalAlignment.Center, 
+                txt,
+                rect,
+                HorizontalAlignment.Center,
                 VerticalAlignment.Center
             );
-
-            // Advance
-            startAngle += sweep;
         }
     }
 
-    private static readonly Color[] Palette = new[]
+
+    private static PathF CreateSlicePath(float cx, float cy, float radius, float startAngle, float sweep)
+    {
+        var path = new PathF();
+        path.MoveTo(cx, cy);
+
+
+        int segments = Math.Max(2, (int)(sweep / 6f)); // ~6°
+
+        for (int i = 0; i <= segments; i++)
+        {
+            float t = i / (float)segments;
+            float angle = startAngle + sweep * t;
+            float rad = angle * (float)Math.PI / 180f;
+
+            float x = cx + (float)Math.Cos(rad) * radius;
+            float y = cy + (float)Math.Sin(rad) * radius;
+
+            path.LineTo(x, y);
+        }
+
+        path.Close();
+        return path;
+    }
+
+    private static readonly Color[] Palette =
     {
         Color.FromArgb("#4CC9F0"),
         Color.FromArgb("#4895EF"),
         Color.FromArgb("#560BAD"),
         Color.FromArgb("#F72585"),
         Color.FromArgb("#2A9D8F"),
+        Color.FromArgb("#F4A261"),
+        Color.FromArgb("#E76F51"),
     };
 
-    private Color GetColorForIndex(int i)
-    {
-        return Palette[i % Palette.Length];
-    }
+    private static Color GetColorForIndex(int i) => Palette[i % Palette.Length];
 }

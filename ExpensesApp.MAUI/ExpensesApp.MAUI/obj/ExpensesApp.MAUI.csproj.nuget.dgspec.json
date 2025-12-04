@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj": {}
+    "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
+    "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
         "projectName": "ExpensesApp.Core",
-        "projectPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
-        "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\obj\\",
+        "projectPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj",
+        "packagesPath": "C:\\Users\\Tomas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Tomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -45,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -76,34 +70,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj": {
+    "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj",
+        "projectUniqueName": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj",
         "projectName": "ExpensesApp.MAUI",
-        "projectPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj",
-        "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\obj\\",
+        "projectPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\ExpensesApp.MAUI.csproj",
+        "packagesPath": "C:\\Users\\Tomas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.MAUI\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Tomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0-android",
           "net9.0-windows10.0.19041.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -111,16 +99,16 @@
           "net9.0-android35.0": {
             "targetAlias": "net9.0-android",
             "projectReferences": {
-              "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
-                "projectPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj"
+              "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
+                "projectPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj"
               }
             }
           },
           "net9.0-windows10.0.19041": {
             "targetAlias": "net9.0-windows10.0.19041.0",
             "projectReferences": {
-              "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
-                "projectPath": "C:\\Users\\tomas\\Desktop\\ExpensesApp\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj"
+              "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj": {
+                "projectPath": "C:\\Users\\Tomas\\Desktop\\C# Learning\\ExpensesApp\\ExpensesApp.MAUI\\ExpensesApp.Core\\ExpensesApp.Core.csproj"
               }
             }
           }
@@ -135,7 +123,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0-android35.0": {
@@ -156,7 +144,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.4, )",
+              "version": "[9.0.9, )",
               "autoReferenced": true
             }
           },
@@ -174,7 +162,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.10, 9.0.10]"
+              "version": "[9.0.11, 9.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -185,7 +173,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         },
         "net9.0-windows10.0.19041": {
           "targetAlias": "net9.0-windows10.0.19041.0",
@@ -228,7 +216,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
