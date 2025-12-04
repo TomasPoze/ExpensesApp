@@ -39,6 +39,14 @@ public static class MauiProgram
         builder.Services.AddSingleton<AccountValidator>();
         builder.Services.AddSingleton<AccountService>();
         builder.Services.AddSingleton<AccountController>();
+        builder.Services.AddSingleton<TransactionPage>();
+        builder.Services.AddSingleton<TransactionPageModel>();
+        builder.Services.AddTransient<SpendingPage>();
+        builder.Services.AddTransient<SpendingPageModel>();
+        builder.Services.AddTransient<BudgetPage>();
+        builder.Services.AddTransient<BudgetPageModel>();
+        builder.Services.AddTransient<StatisticPage>();
+        builder.Services.AddTransient<StatisticPageModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

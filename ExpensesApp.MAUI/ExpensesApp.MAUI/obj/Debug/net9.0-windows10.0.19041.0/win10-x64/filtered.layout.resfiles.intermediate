@@ -46,11 +46,16 @@ appiconWideTile.scale-125.png
 appiconWideTile.scale-150.png
 appiconWideTile.scale-200.png
 appiconWideTile.scale-400.png
+budget.scale-100.png
+chart_histogram.scale-100.png
+chart_pie.scale-100.png
 dotnet_bot.scale-100.png
 dotnet_bot.scale-125.png
 dotnet_bot.scale-150.png
 dotnet_bot.scale-200.png
 dotnet_bot.scale-400.png
+home.scale-100.png
+invoice.scale-100.png
 user.scale-100.png
 splashSplashScreen.scale-100.png
 splashSplashScreen.scale-125.png

@@ -1040,3 +1040,13 @@ C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI
 C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\budget.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\chart_pie.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\chart_histogram.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\invoice.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\home.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\budget.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\chart_histogram.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\chart_pie.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\home.scale-100.png
+C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\invoice.scale-100.png

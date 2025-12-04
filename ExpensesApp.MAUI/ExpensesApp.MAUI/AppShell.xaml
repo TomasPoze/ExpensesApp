@@ -1,14 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="ExpensesApp.MAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ExpensesApp.MAUI"
     xmlns:pages="clr-namespace:ExpensesApp.MAUI.Pages"
-    Title="ExpensesApp.MAUI">
+    Title="ExpensesApp.MAUI"
+    Shell.NavBarIsVisible="False"
+    >
 
-    <ShellContent
-        ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="MainPage" />
-    
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#111111" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+            <Setter Property="Shell.TabBarTitleColor" Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#888888" />
+        </Style>
+
+        <Style TargetType="ShellItem">
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.UnselectedColor" Value="#888888" />
+        </Style>
+    </Shell.Resources>
+
+
+    <TabBar>
+
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate pages:MainPage}"
+            Icon="home.png"
+            Route="MainPage" />
+        <ShellContent
+            Title="Spendings"
+            Icon="chart_pie.png"
+            ContentTemplate="{DataTemplate pages:SpendingPage}" />
+
+        <ShellContent
+            Title="Transactions"
+            Icon="invoice.png"
+            ContentTemplate="{DataTemplate pages:TransactionPage}" />
+        <ShellContent
+            Title="Budget"
+            Icon="budget.png"
+            ContentTemplate="{DataTemplate pages:BudgetPage}" />
+        <ShellContent
+            Title="Statistics"
+            Icon="chart_histogram.png"
+            ContentTemplate="{DataTemplate pages:StatisticPage}" />
+    </TabBar>
 </Shell>

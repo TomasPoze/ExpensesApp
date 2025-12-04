@@ -47,6 +47,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.Add
 build_metadata.AdditionalFiles.TargetPath = Pages\AddExpensePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\AddExpensePage.xaml
 
+[C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Pages/BudgetPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.BudgetPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\BudgetPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\BudgetPage.xaml
+
 [C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Pages/ExpensesPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.ExpensesPage.xaml
@@ -58,6 +64,24 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
+
+[C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Pages/SpendingPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.SpendingPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\SpendingPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\SpendingPage.xaml
+
+[C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Pages/StatisticPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.StatisticPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\StatisticPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\StatisticPage.xaml
+
+[C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Pages/TransactionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Pages.TransactionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\TransactionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\TransactionPage.xaml
 
 [C:/Users/Tomas/Desktop/C\# Learning/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
