@@ -5,6 +5,10 @@
              xmlns:views="using:ExpensesApp.MAUI.Views"
              x:Class="ExpensesApp.MAUI.Pages.SpendingPage">
     <ContentPage.Content>
-        <views:PieChartView x:Name="PieChartViewControl" HeightRequest="200" WidthRequest="200"/>
+        <Grid RowDefinitions="Auto,*">
+
+            <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
+            <views:PieChartView x:Name="PieChartViewControl" HeightRequest="200" WidthRequest="200" Grid.Row="1"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

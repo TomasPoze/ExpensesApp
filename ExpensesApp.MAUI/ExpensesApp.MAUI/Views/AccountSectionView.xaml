@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ExpensesApp.MAUI.ViewModels"
+             xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
+             x:Class="ExpensesApp.MAUI.Views.AccountSectionView"
+             x:DataType="viewModels:AccountSectionViewModel"
+             >
+    <VerticalStackLayout>
+
+        <Border StrokeShape="RoundRectangle 12" BackgroundColor="#222" Padding="15" Margin="0,10">
+            <VerticalStackLayout>
+                <Label Text="Accounts" FontSize="20" FontAttributes="Bold" TextColor="White" />
+
+                <CollectionView ItemsSource="{Binding Accounts}" Margin="0,5">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Account">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding AccountName}" TextColor="White" FontSize="17" />
+                                <Label Text="{Binding Balance, StringFormat='{0} €'}"
+                                       TextColor="White" FontSize="17"
+                                       HorizontalOptions="End" Grid.Column="1" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="+ Add Account"
+                        Command="{Binding AddAccountCommand}"
+                        BackgroundColor="#444"
+                        TextColor="White"
+                        CornerRadius="10"
+                        FontSize="14"
+                        Padding="8,4"
+                        HorizontalOptions="Center"
+                        Margin="0,10,0,0" />
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentView>

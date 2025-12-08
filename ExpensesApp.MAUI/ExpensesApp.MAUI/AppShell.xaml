@@ -22,6 +22,7 @@
             <Setter Property="Shell.ForegroundColor" Value="White" />
             <Setter Property="Shell.TitleColor" Value="White" />
             <Setter Property="Shell.UnselectedColor" Value="#888888" />
+
         </Style>
     </Shell.Resources>
 
