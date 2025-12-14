@@ -1,20 +1,26 @@
-﻿namespace ExpensesApp.Core.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ExpensesApp.Core.Models;
 
 public class User
 {
-    private static int _counter = 1;
-    public int Id { get; set; }
-    public string UserName { get; set; } = string.Empty;
+    [Key]
+    public Guid Id { get; set; }
+
     public string Email { get; set; } = string.Empty;
-    public List<Account> Accounts { get; } = new();
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+    public string UserName { get; set; } = string.Empty;
 
-    public User(Account account, string userName, string email)
+    public string? GoogleId { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+    // Navigation property - User has many Accounts
+    public List<Account> Accounts { get; set; } = new();
+
+    public User()
     {
-        Id = _counter++;
-        UserName = userName;
-        Email = email;
     }
 }

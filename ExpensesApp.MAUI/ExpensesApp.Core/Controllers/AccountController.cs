@@ -7,44 +7,31 @@ namespace ExpensesApp.Core.Controllers;
 public class AccountController
 {
     private readonly AccountService _service;
-    private readonly AccountValidator _accountValidator;
 
-    public AccountController(AccountService service, AccountValidator accountValidator)
+    public AccountController(AccountService service)
     {
         _service = service;
-        _accountValidator = accountValidator;
     }
 
-    public (bool Success, string Message) AddAccount(string name, string currency, decimal balance,
-        decimal monthlyIncome)
+    public async Task<List<Account>> GetAccountsAsync()
     {
-        var valAccName = _accountValidator.ValidateName(name);
-        var valCurrency = _accountValidator.ValidateCurrency(currency);
-        var valBalance = _accountValidator.ValidateBalance(balance);
-        var valIncome = _accountValidator.ValidateMonthlyIncome(monthlyIncome);
-        
-        if (!valAccName.Success || !valCurrency.Success || !valBalance.Success || !valIncome.Success)
-            return (false, "Bad input, account not created");
-
-        if (!Enum.TryParse(currency, true, out Currency parsedCurrency))
-            return (false, "Invalid currency type");
-
-        _service.AddAccount(new Account(name, parsedCurrency, balance, monthlyIncome));
-        return (true, "Account created");
+        // Call the new Async method
+        return await _service.GetAllAccountsAsync();
     }
 
-    public List<Account> GetAllAccounts()
+    public async Task<(bool Success, string Message)> AddAccountAsync(Account account)
     {
-        return _service.GetAllAccounts();
+        // Call the new Async method
+        return await _service.AddAccountAsync(account);
     }
 
-    public (bool Success, string) UpdateAccount(Account accountUpdated)
+    public async Task<(bool Success, string Message)> UpdateAccountAsync(Account account)
     {
-        return _service.UpdateAccount(accountUpdated);
+        return await _service.UpdateAccountAsync(account);
     }
 
-    public (bool Success, string Message) DeleteAccount(int id)
+    public async Task<(bool Success, string Message)> DeleteAccountAsync(int id)
     {
-        return _service.DeleteAccount(id);
+        return await _service.DeleteAccountAsync(id);
     }
 }

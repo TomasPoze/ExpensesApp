@@ -50,6 +50,9 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Accounts">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._accounts"/>
+        </member>
         <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Today">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._today"/>
         </member>
@@ -58,9 +61,6 @@
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.SpendingCategories">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._spendingCategories"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Accounts">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._accounts"/>
         </member>
         <member name="F:ExpensesApp.MAUI.PageModels.MainPageModel.goToAddExpenseCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseCommand"/>.</summary>
@@ -145,6 +145,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Accounts">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Accounts" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Today">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Today" generated properties.</summary>
         </member>
@@ -153,9 +156,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SpendingCategories">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Accounts">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Accounts" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -184,6 +184,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Accounts">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Accounts" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Today">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Today" generated properties.</summary>
         </member>
@@ -192,9 +195,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SpendingCategories">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Accounts">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Accounts" generated properties.</summary>
         </member>
     </members>
 </doc>

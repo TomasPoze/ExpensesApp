@@ -22,10 +22,10 @@ public partial class AddAccountPageModel : ObservableObject
     [RelayCommand]
     private async Task Save()
     {
-        var result = _accountController.AddAccount(_name, _currency, _balance, _monthlyIncome);
+        /*var result = _accountController.AddAccount(_name, _currency, _balance, _monthlyIncome);
         if (result.Success)
             await Shell.Current.GoToAsync("..");
         else
-            await Shell.Current.DisplayAlert(result.Message, result.Message, "OK");
+            await Shell.Current.DisplayAlert(result.Message, result.Message, "OK");*/
     }
 }

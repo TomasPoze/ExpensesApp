@@ -1,6 +1,167 @@
-@ExpensesApp.Api_HostAddress = http://localhost:5033
+### ===================
+### USERS
+### ===================
 
-GET {{ExpensesApp.Api_HostAddress}}/weatherforecast/
+### Get all users
+GET http://localhost:5033/api/users
 Accept: application/json
 
-###
+### Create a user (Run this first!)
+POST http://localhost:5033/api/users
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "userName": "testuser"
+}
+
+### Get user by ID (replace with actual GUID after creating)
+GET http://localhost:5033/api/users/a5dc0188-5b12-4b7c-8170-f742f3223c5f
+Accept: application/json
+
+### Get user's accounts
+GET http://localhost:5033/api/users/YOUR_USER_GUID_HERE/accounts
+Accept: application/json
+
+### ===================
+### ACCOUNTS
+### ===================
+
+### Get all accounts
+GET http://localhost:5033/api/accounts
+Accept: application/json
+
+### Create account (replace userId with actual GUID)
+POST http://localhost:5033/api/accounts
+Content-Type: application/json
+
+{
+  "accountName": "My Bank Account",
+  "type": 1,
+  "currency": 0,
+  "balance": 1000.00,
+  "monthlyIncome": 5000.00,
+  "userId": "a5dc0188-5b12-4b7c-8170-f742f3223c5f"
+}
+
+### Get account by ID
+GET http://localhost:5033/api/accounts/1
+Accept: application/json
+
+### Update account
+PUT http://localhost:5033/api/accounts/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "accountName": "Updated Account Name",
+  "type": 1,
+  "currency": 0,
+  "balance": 2000.00,
+  "monthlyIncome": 6000.00,
+  "userId": "YOUR_USER_GUID_HERE"
+}
+
+### Delete account
+DELETE http://localhost:5033/api/accounts/1
+
+### ===================
+### EXPENSES
+### ===================
+
+### Get all expenses
+GET http://localhost:5033/api/expenses
+Accept: application/json
+
+### Get expenses by account
+GET http://localhost:5033/api/expenses?accountId=1
+Accept: application/json
+
+### Get expenses summary
+GET http://localhost:5033/api/expenses/summary
+Accept: application/json
+
+### Create expense
+POST http://localhost:5033/api/expenses
+Content-Type: application/json
+
+{
+  "accountId": 1,
+  "category": "Food",
+  "amount": 25.50,
+  "description": "Lunch at restaurant"
+}
+
+### Get expense by ID
+GET http://localhost:5033/api/expenses/1
+Accept: application/json
+
+### Update expense
+PUT http://localhost:5033/api/expenses/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "accountId": 1,
+  "category": "Food",
+  "amount": 30.00,
+  "description": "Updated description"
+}
+
+### Delete expense
+DELETE http://localhost:5033/api/expenses/1
+
+### ===================
+### TRANSACTIONS
+### ===================
+
+### Get all transactions
+GET http://localhost:5033/api/transactions
+Accept: application/json
+
+### Get transactions by account
+GET http://localhost:5033/api/transactions?accountId=1
+Accept: application/json
+
+### Get only income transactions
+GET http://localhost:5033/api/transactions?type=0
+Accept: application/json
+
+### Get only expense transactions
+GET http://localhost:5033/api/transactions?type=1
+Accept: application/json
+
+### Get transactions summary
+GET http://localhost:5033/api/transactions/summary
+Accept: application/json
+
+### Create income transaction
+POST http://localhost:5033/api/transactions
+Content-Type: application/json
+
+{
+  "accountId": 1,
+  "category": "Salary",
+  "amount": 3000.00,
+  "description": "Monthly salary",
+  "type": 0
+}
+
+### Create expense transaction
+POST http://localhost:5033/api/transactions
+Content-Type: application/json
+
+{
+  "accountId": 1,
+  "category": "Utilities",
+  "amount": 150.00,
+  "description": "Electric bill",
+  "type": 1
+}
+
+### Get transaction by ID
+GET http://localhost:5033/api/transactions/1
+Accept: application/json
+
+### Delete transaction
+DELETE http://localhost:5033/api/transactions/1

@@ -9,104 +9,69 @@ namespace ExpensesApp.Core.Services;
 public class AccountService
 {
     private List<Account> _accounts;
-    private AccountValidator _accountValidator;
-    private readonly AccountRepository _accountRepository;
-    private readonly IAccountRepository _repo;
+    private readonly AccountValidator _accountValidator;
+    private readonly IAccountRepository _repository;
     
 
     public AccountService(AccountValidator accountValidator, AccountRepository accountRepository, IAccountRepository repo)
     {
         _accountValidator = accountValidator;
-        _accountRepository = accountRepository;
-        _repo = repo;
-        _accounts = _repo.Load();
-        
-        Debug.WriteLine("Loading accounts JSON...");
-
-        var (acc, errors) = _accountRepository.LoadFromFile();
-
-        if (acc == null)
-        {
-            Debug.WriteLine("CRITICAL: accounts == null");
-        }
-
-        Debug.WriteLine("Loaded count: " + acc.Count);
-        if (errors.Count > 0)
-        {
-            Debug.WriteLine("Errors loading accounts:");
-            foreach (var e in errors) Debug.WriteLine(e);
-        }
-
+        _repository = repo;
     }
 
-    public (bool Success, string Message) AddExpenseToAccount(int accountId, Expense expense)
+    public async Task<List<Account>> GetAllAccountsAsync()
     {
-        var acc = _accounts.FirstOrDefault(x => x.Id == accountId);
-        if (acc == null)
-            return (false, "Account not found");
-        
-        acc.Expenses.Add(expense);
-        acc.UpdatedAt = DateTime.Now;
-        _repo.Save(_accounts);
-        return (true, "Expense added");
+        return await _repository.GetAccountAsync();
     }
-    
-    public (bool Success, string Message) AddAccount(Account account)
+
+    public async Task<Account?> GetAccountAsync(int id)
     {
-        var validation = _accountValidator.ValidateAccount((account));
+        return await _repository.GetAccountAsync(id);
+    }
+
+    public async Task<(bool Success, string Message)> AddAccountAsync(Account account)
+    {
+        var validation = _accountValidator.ValidateAccount(account);
         if (!validation.Success)
             return (false, validation.Message);
-        _accounts.Add(account);
+
         try
         {
-            _repo.Save(_accounts);
+            await _repository.AddAccountAsync(account);
+            return (true, "Account created successfully");
         }
         catch (Exception ex)
         {
-            return (false, ex.Message);
+            return (false, $"Error creating account: {ex.Message}");
         }
-
-        return (true, "Added successfully");
     }
 
-    public List<Account> GetAllAccounts()
+    public async Task<(bool Success, string Message)> UpdateAccountAsync(Account account)
     {
-        return _accounts.ToList();
-    }
-
-    public Account? GetAccountById(int id)
-    {
-        return _accounts.FirstOrDefault(x => x.Id == id);
-    }
-
-    public (bool Success, string Message) UpdateAccount(Account updatedAccount)
-    {
-        var acc = _accounts.FirstOrDefault(x => x.Id == updatedAccount.Id);
-        if (acc == null)
-            return (false, "Account not found");
-        var validation = _accountValidator.ValidateAccount((updatedAccount));
+        var validation = _accountValidator.ValidateAccount(account);
         if (!validation.Success)
-        {
             return (false, validation.Message);
+
+        try
+        {
+            await _repository.UpdateAccountAsync(account);
+            return (true, "Account updated successfully");
+        }catch(Exception ex)
+        {
+            return (false, $"Error updating account: {ex.Message}");
         }
-
-        acc.AccountName = updatedAccount.AccountName;
-        acc.MonthlyIncome = updatedAccount.MonthlyIncome;
-        acc.UserId = updatedAccount.UserId;
-        acc.Currency = updatedAccount.Currency;
-        acc.Balance = updatedAccount.Balance;
-        acc.UpdatedAt = DateTime.Now;
-        _repo.Save(_accounts);
-        return (true, "Account updated successfully");
     }
-
-    public (bool Success, string Message) DeleteAccount(int id)
+    
+    public async Task<(bool Success, string Message)> DeleteAccountAsync(int id)
     {
-        var acc = _accounts.FirstOrDefault(x => x.Id == id);
-        if (acc == null)
-            return (false, "Account not found");
-        _accounts.Remove(acc);
-        _repo.Save(_accounts);
-        return (true, "Account deleted successfully");
+        try
+        {
+            await _repository.DeleteAccountAsync(id);
+            return (true, "Account deleted successfully");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Error deleting account: {ex.Message}");
+        }
     }
 }

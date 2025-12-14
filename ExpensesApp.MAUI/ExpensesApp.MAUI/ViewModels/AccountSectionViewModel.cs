@@ -11,32 +11,18 @@ public partial class AccountSectionViewModel : ObservableObject
 {
     private readonly AccountController _accountController;
 
-    public AccountSectionViewModel(AccountController accountController)
-    {
-        _accountController = accountController;
-        Accounts = new ObservableCollection<Account>(_accountController.GetAllAccounts());
-
-        UpdateSpendingCategories();
-    }
-
-    [RelayCommand]
-    private async Task GoToAddExpenseAsync()
-    {
-        await Shell.Current.GoToAsync(nameof(AddExpensePage));
-    }
-
     [ObservableProperty] private ObservableCollection<Account> _accounts;
-
-    [RelayCommand]
-    private async Task AddAccount()
-    {
-        await Shell.Current.GoToAsync(nameof(AddAccountPage));
-    }
-
     [ObservableProperty] private string _today = DateTime.Today.ToString("dddd, dd MMMM yyyy");
     [ObservableProperty] private decimal _totalAmount;
     [ObservableProperty] private ObservableCollection<SpendingCategory> _spendingCategories;
 
+    public AccountSectionViewModel(AccountController accountController)
+    {
+        _accountController = accountController;
+
+        Accounts = new ObservableCollection<Account>();
+        SpendingCategories = new ObservableCollection<SpendingCategory>();
+    }
 
     public decimal TotalMonthlyIncome => Accounts?.Sum(a => a.MonthlyIncome) ?? 0;
     public decimal SpentThisMonth => Accounts?.SelectMany(a => a.Expenses).Sum(e => e.Amount) ?? 0;
@@ -45,6 +31,18 @@ public partial class AccountSectionViewModel : ObservableObject
         TotalMonthlyIncome == 0 ? 0 : Math.Round((double)(SpentThisMonth / TotalMonthlyIncome) * 100, 2);
 
     public string IncomeSpentText => $"{SpentThisMonth} € / {TotalMonthlyIncome} €";
+
+    [RelayCommand]
+    private async Task GoToAddExpenseAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(AddExpensePage));
+    }
+    
+    [RelayCommand]
+    private async Task AddAccount()
+    {
+        await Shell.Current.GoToAsync(nameof(AddAccountPage));
+    }
 
     private void UpdateSpendingCategories()
     {
@@ -81,17 +79,27 @@ public partial class AccountSectionViewModel : ObservableObject
         );
     }
 
-    public void RefreshAccounts()
+    public async Task RefreshAccountsAsync()
     {
-        Accounts = new ObservableCollection<Account>(_accountController.GetAllAccounts());
+        try
+        {
+            // 4. Use the new Async method from the Controller
+            var accountList = await _accountController.GetAccountsAsync();
 
+            // Update the UI list
+            Accounts = new ObservableCollection<Account>(accountList);
 
-        OnPropertyChanged(nameof(TotalMonthlyIncome));
-        OnPropertyChanged(nameof(SpentThisMonth));
-        OnPropertyChanged(nameof(SpentPercentage));
-        OnPropertyChanged(nameof(IncomeSpentText));
-        UpdateSpendingCategories();
+            // Notify UI to update the calculated totals
+            OnPropertyChanged(nameof(TotalMonthlyIncome));
+            OnPropertyChanged(nameof(SpentThisMonth));
+            OnPropertyChanged(nameof(SpentPercentage));
+            OnPropertyChanged(nameof(IncomeSpentText));
 
-        // LoadExpenses();
+            UpdateSpendingCategories();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error loading accounts: {ex.Message}");
+        }
     }
 }

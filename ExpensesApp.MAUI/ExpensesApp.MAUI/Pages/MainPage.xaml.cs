@@ -17,17 +17,20 @@ public partial class MainPage : ContentPage
         _viewModel = viewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        //_viewModel.RefreshExpenses();
+        if (BindingContext is MainPageModel model)
+        {
+            await model.RefreshAccountsAsync();
+        }
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
         if(BindingContext is MainPageModel vm)
-            vm.RefreshAccounts();
+            vm.RefreshAccountsAsync();
     }
 
     private void MainScrollView_Scrolled(object sender, ScrolledEventArgs e)

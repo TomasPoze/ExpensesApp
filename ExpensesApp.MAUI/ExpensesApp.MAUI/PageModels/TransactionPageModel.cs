@@ -8,10 +8,10 @@ public class TransactionPageModel:ObservableObject
 {
     private readonly AccountController _accountController;
 
-    private TransactionPageModel(AccountController accountController)
+    public TransactionPageModel(AccountController accountController)
     {
         _accountController = accountController;
-        _accountController.GetAllAccounts();
+        //_accountController.GetAllAccounts();
     }
 
     
