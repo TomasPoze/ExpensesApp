@@ -5,6 +5,7 @@ using ExpensesApp.Core.Validators;
 using ExpensesApp.MAUI.PageModels;
 using ExpensesApp.MAUI.Pages;
 using ExpensesApp.MAUI.Repositories;
+using ExpensesApp.MAUI.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace ExpensesApp.MAUI;
@@ -33,6 +34,7 @@ public static class MauiProgram
         builder.Services.AddScoped<AccountService>();
         builder.Services.AddTransient<AccountValidator>();
         builder.Services.AddSingleton<AccountController>();
+        builder.Services.AddTransient<AccountSectionViewModel>();
         builder.Services.AddTransient<AddAccountPageModel>();
         builder.Services.AddTransient<AddAccountPage>();
         builder.Services.AddScoped<HttpClient>();

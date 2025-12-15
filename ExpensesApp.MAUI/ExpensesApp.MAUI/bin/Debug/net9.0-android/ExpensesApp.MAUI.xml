@@ -47,32 +47,15 @@
         </member>
         <member name="T:ExpensesApp.MAUI.PageModels.MainPageModel">
             <inheritdoc/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.AccountSection">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._accountSection"/>
+        </member>
+        <member name="T:ExpensesApp.MAUI.PageModels.TransactionPageModel">
             <inheritdoc/>
-            <inheritdoc/>
         </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Accounts">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._accounts"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.Today">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._today"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.TotalAmount">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._totalAmount"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.SpendingCategories">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._spendingCategories"/>
-        </member>
-        <member name="F:ExpensesApp.MAUI.PageModels.MainPageModel.goToAddExpenseCommand">
-            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseCommand"/>.</summary>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.MainPageModel.GoToAddExpenseAsync"/>.</summary>
-        </member>
-        <member name="F:ExpensesApp.MAUI.PageModels.MainPageModel.addAccountCommand">
-            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.MainPageModel.AddAccountCommand"/>.</summary>
-        </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.AddAccountCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.MainPageModel.AddAccount"/>.</summary>
+        <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountSection">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.TransactionPageModel._accountSection"/>
         </member>
         <member name="T:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel">
             <inheritdoc/>
@@ -81,15 +64,6 @@
         </member>
         <member name="P:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.Accounts">
             <inheritdoc cref="F:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel._accounts"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.Today">
-            <inheritdoc cref="F:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel._today"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.TotalAmount">
-            <inheritdoc cref="F:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel._totalAmount"/>
-        </member>
-        <member name="P:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.SpendingCategories">
-            <inheritdoc cref="F:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel._spendingCategories"/>
         </member>
         <member name="F:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.goToAddExpenseCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.ViewModels.AccountSectionViewModel.GoToAddExpenseCommand"/>.</summary>
@@ -145,17 +119,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountSection">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountSection" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Accounts">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Accounts" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Today">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Today" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalAmount">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SpendingCategories">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -184,17 +152,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountSection">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountSection" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Accounts">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Accounts" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Today">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Today" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalAmount">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalAmount" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SpendingCategories">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SpendingCategories" generated properties.</summary>
         </member>
     </members>
 </doc>

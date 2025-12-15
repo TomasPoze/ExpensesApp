@@ -1,18 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ExpensesApp.Core.Controllers;
 using ExpensesApp.Core.Repositories;
+using ExpensesApp.MAUI.ViewModels;
 
 namespace ExpensesApp.MAUI.PageModels;
 
-public class TransactionPageModel:ObservableObject
+public partial class TransactionPageModel:ObservableObject
 {
-    private readonly AccountController _accountController;
 
-    public TransactionPageModel(AccountController accountController)
+    [ObservableProperty] private AccountSectionViewModel _accountSection;
+
+    public TransactionPageModel(AccountSectionViewModel accountSectionVM)
     {
-        _accountController = accountController;
-        //_accountController.GetAllAccounts();
+        AccountSection = accountSectionVM;
     }
 
-    
+    public async Task InitializeAsync()
+    {
+        await AccountSection.LoadAccountsAsync();
+    }
 }
