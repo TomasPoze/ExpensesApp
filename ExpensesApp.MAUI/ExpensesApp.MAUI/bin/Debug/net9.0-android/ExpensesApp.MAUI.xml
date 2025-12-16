@@ -7,6 +7,7 @@
         <member name="T:ExpensesApp.MAUI.PageModels.AddAccountPageModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Name">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._name"/>
@@ -25,6 +26,12 @@
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.SaveCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Save"/>.</summary>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel.cancelCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Cancel"/>.</summary>
         </member>
         <member name="T:ExpensesApp.MAUI.PageModels.AddExpensePageModel">
             <inheritdoc/>

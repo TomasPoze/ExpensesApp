@@ -28,4 +28,10 @@ public partial class AddAccountPageModel : ObservableObject
         else
             await Shell.Current.DisplayAlert(result.Message, result.Message, "OK");*/
     }
+    
+    [RelayCommand]
+    private async Task Cancel()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }
