@@ -5,82 +5,90 @@ namespace ExpensesApp.Core.Services;
 
 public class ExpenseService
 {
-    private readonly ExpenseRepository _repository;
-    private List<Expense> _expenses;
+    private readonly IExpenseRepository _repository;
+    private readonly ExpenseValidator _validator;
 
-    public ExpenseService(ExpenseRepository repository)
+
+    public ExpenseService(IExpenseRepository repository, ExpenseValidator validator)
     {
         _repository = repository;
-        _expenses = _repository.LoadFromFile().Item1;
+        _validator = validator;
     }
 
-
-    public (decimal Sum, decimal Average, int Count) GetStatisticsSummary()
+    public async Task<List<Expense>> GetExpensesAsync(int? accountId = null)
     {
-        if (_expenses.Count == 0)
+        return await _repository.GetExpensesAsync(accountId);
+    }
+
+    public async Task<(bool Success, string Message)> AddExpenseAsync(Expense expense)
+    {
+        var validation = _validator.ValidateExpense(expense);
+        if (!validation.Success) return (false, validation.Message);
+
+        try
+        {
+            await _repository.AddExpenseAsync(expense);
+            return (true, "Expense added successfully");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Network error: {ex.Message}");
+        }
+    }
+
+    public async Task<(bool Success, string Message)> UpdateExpenseAsync(Expense expense)
+    {
+        var validation = _validator.ValidateExpense(expense);
+        if (!validation.Success)
+            return (false, validation.Message);
+
+        try
+        {
+            await _repository.UpdateExpenseAsync(expense);
+            return (true, "Expense updated successfully");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Error updating expense: {ex.Message}");
+        }
+    }
+
+    public async Task<(bool Success, string Message)> DeleteExpenseAsync(int id)
+    {
+        try
+        {
+            await _repository.DeleteExpenseAsync(id);
+            return (true, "Expense deleted successfully");
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Error deleting expense: {ex.Message}");
+        }
+    }
+
+    public (decimal Sum, decimal Average, int Count) GetStatisticsSummary(List<Expense> expenses)
+    {
+        if (expenses == null || expenses.Count == 0)
             return (0, 0, 0);
 
-        var sum = _expenses.Sum(e => e.Amount);
-        var average = _expenses.Average(e => e.Amount);
-        var count = _expenses.Count;
-
-        return (sum, average, count);
+        return (
+            expenses.Sum(e => e.Amount),
+            expenses.Average(e => e.Amount),
+            expenses.Count
+        );
     }
 
-    public void RemoveExpense(string idInput)
+    public List<Expense> GetExpensesSortedByAmount(List<Expense> expenses, bool descending)
     {
-        var id = int.Parse(idInput);
-        var expenseToRemove = _expenses.FirstOrDefault(x => x.Id == id);
-        _expenses.Remove(expenseToRemove);
-    }
-
-    public bool EditExpense(int id, string? newCategory, string? newAmount, string? newDescription)
-    {
-        var expense = _expenses.FirstOrDefault(e => e.Id == id);
-        if (expense == null)
-            return false;
-
-        if (!string.IsNullOrEmpty(newCategory))
-            expense.Category = newCategory;
-
-        if (!string.IsNullOrEmpty(newAmount))
-            expense.Amount = decimal.Parse(newAmount);
-
-        if (!string.IsNullOrEmpty(newDescription))
-            expense.Description = newDescription;
-
-        return true;
-    }
-
-    public (bool Success, string Message) ExportToCsv()
-    {
-        return _repository.ExportToCsv(_expenses);
-    }
-
-    public (List<Expense>, List<string> Errors) LoadFromFile()
-    {
-        var (expenses, errors) = _repository.LoadFromFile();
-        _expenses = expenses;
-        
-        return (_expenses, errors);
-    }
-
-    public void SaveToFile()
-    {
-        _repository.SaveToFile(_expenses);
-    }
-
-    public void AddExpenses(Expense expense)
-    {
-        ArgumentNullException.ThrowIfNull(expense);
-
-        _expenses.Add(expense);
+        return descending
+            ? expenses.OrderByDescending(e => e.Amount).ToList()
+            : expenses.OrderBy(e => e.Amount).ToList();
     }
 
     public (IEnumerable<(int Year, int Month, string MonthName, decimal Total)> ByMonth,
-        IEnumerable<(int Year, decimal Total)> ByYear) GetMonthlyStatistics()
+        IEnumerable<(int Year, decimal Total)> ByYear) GetMonthlyStatistics(List<Expense> expenses)
     {
-        var byMonth = _expenses.GroupBy(e => new { e.Date.Year, e.Date.Month })
+        var byMonth = expenses.GroupBy(e => new { e.Date.Year, e.Date.Month })
             .Select(f => (
                 Year: f.Key.Year,
                 Month: f.Key.Month,
@@ -88,7 +96,7 @@ public class ExpenseService
                 Total: f.Sum(x => x.Amount)
             )).OrderBy(x => x.Year).ThenBy(x => x.Month);
 
-        var byYear = _expenses.GroupBy(e => new { e.Date.Year })
+        var byYear = expenses.GroupBy(e => new { e.Date.Year })
             .Select(e => (
                 Year: e.Key.Year,
                 Total: e.Sum(x => x.Amount)))
@@ -97,60 +105,10 @@ public class ExpenseService
         return (byMonth, byYear);
     }
 
-    public List<Expense> GetExpensesByCategory(string category)
+    public IEnumerable<(string Category, decimal Sum)> GetTotalByCategory(List<Expense> expenses)
     {
-        return _expenses.Where(e => e.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
-    }
-
-    public List<Expense> GetExpensesSortedByAmount(bool descending)
-    {
-        if (descending)
-        {
-            var sorted = _expenses.OrderByDescending(e => e.Amount).ToList();
-            return sorted;
-        }
-        else
-        {
-            var sorted = _expenses.OrderBy(e => e.Amount).ToList();
-            return sorted;
-        }
-    }
-
-
-    public IEnumerable<(string Category, decimal Sum)> GetTotalByCategory()
-    {
-        var total = _expenses
+        return expenses
             .GroupBy(e => e.Category)
             .Select(f => (Category: f.Key, Sum: f.Sum(x => x.Amount)));
-        return total;
-    }
-
-    public Expense? GetMostExpensiveExpense()
-    {
-        var expensive = _expenses.OrderByDescending(e => e.Amount).FirstOrDefault();
-        return expensive;
-    }
-
-    public Expense? GetCheapestExpense()
-    {
-        var cheapest = _expenses.OrderBy(e => e.Amount).FirstOrDefault();
-
-        return cheapest;
-    }
-
-    public decimal GetExpenseSumByMonth(int month)
-    {
-        var expenses = _expenses.Where(e => e.Date.Month == month).Sum(f => f.Amount);
-        return expenses;
-    }
-
-    public decimal GetTotalExpenses()
-    {
-        return _expenses.Sum(e => e.Amount);
-    }
-
-    public List<Expense> GetAllExpenses()
-    {
-        return _expenses.ToList();
     }
 }

@@ -39,6 +39,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AddAccountPage>();
         builder.Services.AddScoped<HttpClient>();
         builder.Services.AddScoped<IAccountRepository, ApiAccountRepository>();
+        builder.Services.AddScoped<IExpenseRepository, ApiExpenseRepository>();
         builder.Services.AddSingleton<TransactionPage>();
         builder.Services.AddSingleton<TransactionPageModel>();
         builder.Services.AddTransient<SpendingPage>();

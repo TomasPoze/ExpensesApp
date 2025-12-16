@@ -7,121 +7,50 @@ namespace ExpensesApp.Core.Controllers;
 public class ExpenseController
 {
     private readonly ExpenseService _service;
-    private readonly ExpenseValidator _validator;
 
-    public ExpenseController(ExpenseService service, ExpenseValidator validator)
+    public ExpenseController(ExpenseService service)
     {
         _service = service;
-        _validator = validator;
     }
 
-    public (bool Success, string Message) ExportToCsv()
+    public async Task<List<Expense>> GetExpensesAsync()
     {
-        return _service.ExportToCsv();
+        return await _service.GetExpensesAsync();
     }
 
-    public (bool Success, string Message) SaveToFile()
+    public async Task<(bool Success, string Message)> AddExpenseAsync(Expense expense)
     {
-        _service.SaveToFile();
-        return (true, "Expenses saved");
+        return await _service.AddExpenseAsync(expense);
     }
 
-    public (bool Success, List<string> Errors) LoadFromFile()
+    public async Task<(bool Success, string Message)> EditExpenseAsync(Expense expense)
     {
-        var (expenses,errors)=_service.LoadFromFile();
-        if(errors.Any())
-            return (true, errors);
-        if(errors.Count == expenses.Count)
-            return (false, errors);
-        return (true, new List<string>());
-        
+        return await _service.UpdateExpenseAsync(expense);
     }
 
-    public void AddExpense(string category, string amountInput, string description)
+    public async Task<(bool Success, string Message)> RemoveExpenseAsync(int id)
     {
-        decimal.TryParse(amountInput, out var amount);
-        var expense = new Expense(DateTime.Now, category, amount, description);
-        _service.AddExpenses(expense);
+        return await _service.DeleteExpenseAsync(id);
     }
 
-    public async Task AddExpenseAsync(string category, string amountInput, string description)
+
+    public async Task<(decimal Sum, decimal Average, int Count)> GetStatisticsSummaryAsync()
     {
-        await Task.Run(() =>
-        {
-            decimal.TryParse(amountInput, out var amount);
-            var expense = new Expense(DateTime.Now, category, amount, description);
-            _service.AddExpenses(expense);
-            AddExpense(category, amountInput, description);
-        });
+        var expenses = await _service.GetExpensesAsync();
+
+        return _service.GetStatisticsSummary(expenses);
     }
 
-    public (bool Success, string Message) EditExpense(int id, string category, string amountInput, string description)
+    public async Task<(IEnumerable<(int Year, int Month, string MonthName, decimal Total)> ByMonth,
+        IEnumerable<(int Year, decimal Total)> ByYear)> GetMonthlyStatisticsAsync()
     {
-        bool edited = _service.EditExpense(id, category, amountInput, description);
-        return edited
-            ? (true, "Expense edited successfully!")
-            : (false, "Could not edit expense!");
+        var expenses = await _service.GetExpensesAsync();
+        return _service.GetMonthlyStatistics(expenses);
     }
 
-    public (bool Success, string Message) RemoveExpense(string id)
+    public async Task<IEnumerable<(string Category, decimal Sum)>> GetTotalByCategoryAsync()
     {
-        var idValid = CheckIfExpenseExists(id);
-        if (!idValid.Success)
-        {
-            return (false, idValid.Message);
-        }
-
-        _service.RemoveExpense(id);
-        return (true, "Expense removed successfully!");
+        var expenses = await _service.GetExpensesAsync();
+        return _service.GetTotalByCategory(expenses);
     }
-
-    public List<Expense> GetAllExpenses()
-    {
-        return _service.GetAllExpenses();
-    }
-
-    public (IEnumerable<(int Year, int Month, string MonthName, decimal Total)> ByMonth,
-        IEnumerable<(int Year, decimal Total)> ByYear ) GetMonthlyStatistics()
-    {
-        return _service.GetMonthlyStatistics();
-    }
-
-    public (decimal Sum, decimal Average, int Count) GetStatisticsSummary()
-    {
-        return _service.GetStatisticsSummary();
-    }
-
-    public (bool Success, string Message) GetMostExpensiveExpense()
-    {
-        var expense = _service.GetMostExpensiveExpense();
-        return expense == null
-            ? (false, "No expenses found.")
-            : (true, expense.PrintInfo());
-    }
-
-    public IEnumerable<(string Category, decimal Sum)> GetTotalByCategory()
-    {
-        return _service.GetTotalByCategory();
-    }
-
-    public (bool Success, string Message, int? Id) CheckIfExpenseExists(string id)
-    {
-        var validate = _validator.ValidateId(id);
-        bool exists = _service.GetAllExpenses().Any(e => e.Id == validate.Id);
-
-        if (!exists)
-            return (false, $"Expense with ID {id} was not found.", null);
-
-        return (true, "Expense Exists.", validate.Id);
-    }
-
-    public (bool Success, string Message) ValidateCategory(string category) => _validator.ValidateCategory(category);
-
-    public (bool Success, bool IsSkipped, string Message, string? Amount) ValidateAmount(string amount)
-    {
-        return _validator.ValidateAmount(amount);
-    }
-
-    public (bool Success, string Message) ValidateDescription(string description) =>
-        _validator.ValidateDescription(description);
 }
