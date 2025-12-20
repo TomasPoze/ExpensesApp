@@ -6,34 +6,43 @@
              xmlns:views="clr-namespace:ExpensesApp.MAUI.Views"
              x:Class="ExpensesApp.MAUI.Pages.AddAccountPage"
              x:DataType="pageModels:AddAccountPageModel"
-             Shell.PresentationMode="ModalAnimated">
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="#111111">
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
             <HorizontalStackLayout Grid.Row="0">
                 <Button Text="X" Command="{Binding CancelCommand}" BackgroundColor="Gray"></Button>
             </HorizontalStackLayout>
-            <VerticalStackLayout Grid.Row="1">
-                <Label Text="Add Expense"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center" />
+            <VerticalStackLayout Grid.Row="1" Padding="20">
+                <Border BackgroundColor="#222"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout>
 
-                <Label Text="Account name" />
-                <Entry Text="{Binding Name}" Placeholder="Enter category" />
+                        <Label Text="Add Account"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="White" />
 
-                <Label Text="Currency" />
-                <Entry Text="{Binding Currency}" Placeholder="Enter Currency" />
+                        <Label Text="Account name" TextColor="White" />
+                        <Entry Text="{Binding Name}" Placeholder="Enter category" TextColor="White" />
 
-                <Label Text="Balance" />
-                <Entry Text="{Binding Balance}" Placeholder="Enter Balance" />
+                        <Label Text="Currency" TextColor="White" />
+                        <Entry Text="{Binding Currency}" Placeholder="Enter Currency" TextColor="White"/>
 
-                <Label Text="Monthly Income" />
-                <Entry Text="{Binding MonthlyIncome}" Placeholder="Enter Monthly Income" />
+                        <Label Text="Balance" TextColor="White" />
+                        <Entry Text="{Binding Balance}" Placeholder="Enter Balance" TextColor="White"/>
 
-                <Button Text="Add Account"
-                        Command="{Binding SaveCommand}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" />
+                        <Label Text="Monthly Income" TextColor="White" />
+                        <Entry Text="{Binding MonthlyIncome}" Placeholder="Enter Monthly Income" TextColor="White"/>
+
+                        <Button Text="Add Account"
+                                Command="{Binding SaveCommand}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
             </VerticalStackLayout>
         </Grid>
     </ContentPage.Content>

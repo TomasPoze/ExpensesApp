@@ -6,7 +6,7 @@ namespace ExpensesApp.Core.Models;
 public class Account
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     // Foreign key to User
     public Guid UserId { get; set; }

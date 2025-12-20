@@ -51,9 +51,9 @@ public class ExpenseValidator
         return (true, "OK");
     }
 
-    public (bool Success, string Message) ValidateId(int id)
+    public (bool Success, string Message) ValidateId(Guid id)
     {
-        if (id <= 0)
+        if (id == Guid.Empty)
             return (false, "Invalid ID.");
         return (true, "OK");
     }

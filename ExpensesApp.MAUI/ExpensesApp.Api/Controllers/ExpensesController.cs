@@ -17,7 +17,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Expense>>> GetExpenses([FromQuery] int? accountId)
+    public async Task<ActionResult<IEnumerable<Expense>>> GetExpenses([FromQuery] Guid? accountId)
     {
         var query = _context.Expenses.AsQueryable();
 
@@ -30,7 +30,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Expense>> GetExpense(int id)
+    public async Task<ActionResult<Expense>> GetExpense(Guid id)
     {
         var expense = await _context.Expenses.FindAsync(id);
 
@@ -61,7 +61,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateExpense(int id, Expense expense)
+    public async Task<IActionResult> UpdateExpense(Guid id, Expense expense)
     {
         if (id != expense.Id)
         {
@@ -85,7 +85,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteExpense(int id)
+    public async Task<IActionResult> DeleteExpense(Guid id)
     {
         var expense = await _context.Expenses.FindAsync(id);
         if (expense == null)
@@ -100,7 +100,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpGet("summary")]
-    public async Task<ActionResult<object>> GetExpensesSummary([FromQuery] int? accountId)
+    public async Task<ActionResult<object>> GetExpensesSummary([FromQuery] Guid? accountId)
     {
         var query = _context.Expenses.AsQueryable();
 

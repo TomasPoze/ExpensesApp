@@ -16,11 +16,11 @@ Content-Type: application/json
 }
 
 ### Get user by ID (replace with actual GUID after creating)
-GET http://localhost:5033/api/users/a5dc0188-5b12-4b7c-8170-f742f3223c5f
+GET http://localhost:5033/api/users/3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c
 Accept: application/json
 
 ### Get user's accounts
-GET http://localhost:5033/api/users/YOUR_USER_GUID_HERE/accounts
+GET http://localhost:5033/api/users/3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c/accounts
 Accept: application/json
 
 ### ===================
@@ -36,12 +36,12 @@ POST http://localhost:5033/api/accounts
 Content-Type: application/json
 
 {
-  "accountName": "My Bank Account",
+  "accountName": "Daily",
   "type": 1,
   "currency": 0,
   "balance": 1000.00,
   "monthlyIncome": 5000.00,
-  "userId": "a5dc0188-5b12-4b7c-8170-f742f3223c5f"
+  "userId": "3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c"
 }
 
 ### Get account by ID
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 
 ### Delete account
-DELETE http://localhost:5033/api/accounts/1
+DELETE http://localhost:5033/api/accounts/2
 
 ### ===================
 ### EXPENSES

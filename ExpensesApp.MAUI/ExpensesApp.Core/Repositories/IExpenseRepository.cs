@@ -5,11 +5,11 @@ namespace ExpensesApp.Core.Repositories;
 public interface IExpenseRepository
 {
     // GET: Get expenses (optionally filtered by account)
-    Task<List<Expense>> GetExpensesAsync(int? accountId = null);
+    Task<List<Expense>> GetExpensesAsync(Guid? accountId = null);
 
     // GET: Get one expense
-    Task<Expense?> GetExpenseAsync(int id);
-
+    //Task<Expense?> GetExpenseAsync(Guid id);
+    
     // POST: Add new expense
     Task<Expense> AddExpenseAsync(Expense expense);
 
@@ -17,5 +17,5 @@ public interface IExpenseRepository
     Task UpdateExpenseAsync(Expense expense);
 
     // DELETE: Delete expense
-    Task DeleteExpenseAsync(int id);
+    Task DeleteExpenseAsync(Guid id);
 }

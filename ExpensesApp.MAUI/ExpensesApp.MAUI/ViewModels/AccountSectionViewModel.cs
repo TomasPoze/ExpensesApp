@@ -44,4 +44,9 @@ public partial class AccountSectionViewModel : ObservableObject
             System.Diagnostics.Debug.WriteLine($"Error loading accounts: {ex.Message}");
         }
     }
+    
+    public async Task OnAccountTap(Account account)
+    {
+        await Shell.Current.GoToAsync($"{nameof(TransactionPage)}?accountId={account.Id}");
+    }
 }

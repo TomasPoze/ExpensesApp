@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ExpensesApp.Core.Controllers;
+using ExpensesApp.Core.Models;
+using Microsoft.Maui.Graphics.Text;
 
 namespace ExpensesApp.MAUI.PageModels;
 
@@ -22,11 +24,19 @@ public partial class AddAccountPageModel : ObservableObject
     [RelayCommand]
     private async Task Save()
     {
-        /*var result = _accountController.AddAccount(_name, _currency, _balance, _monthlyIncome);
+        var result = await _accountController.AddAccountAsync(new Account
+        {
+            AccountName = Name,
+            Currency = Enum.Parse<Currency>(Currency),
+            Balance = Balance,
+            MonthlyIncome = MonthlyIncome,
+            UserId = Guid.Parse("3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c")
+            
+        });
         if (result.Success)
             await Shell.Current.GoToAsync("..");
         else
-            await Shell.Current.DisplayAlert(result.Message, result.Message, "OK");*/
+            await Shell.Current.DisplayAlert(result.Message, result.Message, "OK");
     }
     
     [RelayCommand]

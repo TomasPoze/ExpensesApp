@@ -15,8 +15,14 @@ public class ExpenseService
         _validator = validator;
     }
 
-    public async Task<List<Expense>> GetExpensesAsync(int? accountId = null)
+    public async Task<List<Expense>> GetExpensesAsync(Guid? accountId = null)
     {
+        return await _repository.GetExpensesAsync(accountId);
+    }
+
+    public async Task<IEnumerable<Expense>> GetExpensesByAccountIdAsync(Guid accountId)
+    {
+        if (accountId == Guid.Empty) return [];
         return await _repository.GetExpensesAsync(accountId);
     }
 
@@ -53,7 +59,7 @@ public class ExpenseService
         }
     }
 
-    public async Task<(bool Success, string Message)> DeleteExpenseAsync(int id)
+    public async Task<(bool Success, string Message)> DeleteExpenseAsync(Guid id)
     {
         try
         {

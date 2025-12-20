@@ -49,18 +49,23 @@ public class ApiAccountRepository : IAccountRepository
             return null;
         }
     }
-
-    public async Task<Account> AddAccountAsync(Account account)
+     public async Task<Account> AddAccountAsync(Account account)
     {
-        var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/accounts",account);
+        var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/accounts", account);
 
-        if (response.IsSuccessStatusCode)
+        try
         {
-            var createdAccount = await response.Content.ReadFromJsonAsync<Account>();
-            return createdAccount;
+            if (response.IsSuccessStatusCode)
+            {
+                var createdAccount = await response.Content.ReadFromJsonAsync<Account>();
+                return createdAccount;
+            }
         }
-
-        throw new Exception("Failed to add account");
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error adding account: {ex.Message}");
+        }
+        throw new Exception($"Failed to add account ");
     }
 
     public async Task UpdateAccountAsync(Account account)
@@ -70,6 +75,6 @@ public class ApiAccountRepository : IAccountRepository
 
     public async Task DeleteAccountAsync(int id)
     {
-        await  _httpClient.DeleteAsync($"{_baseUrl}/accounts/{id}");
+        await _httpClient.DeleteAsync($"{_baseUrl}/accounts/{id}");
     }
 }

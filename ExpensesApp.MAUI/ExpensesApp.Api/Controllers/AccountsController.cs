@@ -48,7 +48,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAccount(int id, Account account)
+    public async Task<IActionResult> UpdateAccount(Guid id, Account account)
     {
         if (id != account.Id)
         {
@@ -74,7 +74,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteAccount(int id)
+    public async Task<IActionResult> DeleteAccount(Guid id)
     {
         var account = await _context.Accounts.FindAsync(id);
         if (account == null)

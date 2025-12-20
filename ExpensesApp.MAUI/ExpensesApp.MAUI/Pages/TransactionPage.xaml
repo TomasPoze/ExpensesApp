@@ -1,19 +1,102 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:ExpensesApp.MAUI.Views"
              xmlns:viewModels="clr-namespace:ExpensesApp.MAUI.PageModels"
-             xmlns:models="clr-namespace:Android.Accounts;assembly=Mono.Android"
+             xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
              x:Class="ExpensesApp.MAUI.Pages.TransactionPage"
              x:DataType="viewModels:TransactionPageModel"
-             BackgroundColor="#111111">
-    
-    <Grid RowDefinitions="Auto, *">
-        <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
-        <VerticalStackLayout Padding="20" Grid.Row="1">
-            <views:AccountSectionView BindingContext="{Binding AccountSection}"  />
+             BackgroundColor="#111111"
+             Title="Transactions"
+             x:Name="TransactionsPageRoot">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <VerticalStackLayout IsVisible="{Binding IsOverviewMode}">
+
+                <Border StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#1E1E1E"
+                        StrokeThickness="0"
+                        Padding="15">
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Accounts"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+
+                        <CollectionView ItemsSource="{Binding Accounts}"
+                                        SelectionMode="None"
+                                        HeightRequest="150">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Account">
+                                    <Grid ColumnDefinitions="*, Auto" Padding="0,8">
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={x:Reference TransactionsPageRoot}, Path=BindingContext.FilterByAccountCommand}"
+                                                CommandParameter="{Binding .}" />
+                                        </Grid.GestureRecognizers>
+
+                                        <Label Grid.Column="0"
+                                               Text="{Binding AccountName}"
+                                               TextColor="White"
+                                               FontSize="16" />
+
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Balance, StringFormat='{0:F2} €'}"
+                                               TextColor="White"
+                                               FontSize="16" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Button Text="+ Add Account"
+                                BackgroundColor="#333"
+                                TextColor="White"
+                                CornerRadius="8"
+                                FontSize="14"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                WidthRequest="150" 
+                                Command="{Binding GoToAddAccountCommand}"
+                                />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout IsVisible="{Binding IsAccountSelected}" Spacing="20">
+                <Grid ColumnDefinitions="Auto, *">
+                    <Button Grid.Column="0"
+                            Text="← Back"
+                            Command="{Binding GoBackToOverviewCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center"/>
+                </Grid>
+
+                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#1E1E1E" Padding="15">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="{Binding SelectedAccountObject.AccountName}" TextColor="White" FontSize="18" />
+                        <Label Text="{Binding SelectedAccountObject.Balance, StringFormat='{0:F2} €'}" FontSize="16"
+                               TextColor="White" Grid.Column="1" />
+                    </Grid>
+                </Border>
+
+                <Button Text="+ Add Expense"
+                        Command="{Binding GoToAddExpenseCommand}"
+                        IsVisible="{Binding IsAccountSelected}"
+                        BackgroundColor="#00C853"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="50" />
+            </VerticalStackLayout>
+
+            <Label Text="Transactions will appear here..."
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
 
         </VerticalStackLayout>
-    </Grid>
+    </ScrollView>
 </ContentPage>

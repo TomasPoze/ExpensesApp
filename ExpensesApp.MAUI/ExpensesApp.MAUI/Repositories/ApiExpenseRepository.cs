@@ -24,7 +24,7 @@ public class ApiExpenseRepository : IExpenseRepository
         }
     }
 
-    public async Task<List<Expense>> GetExpensesAsync(int? accountId = null)
+    public async Task<List<Expense>> GetExpensesAsync(Guid? accountId)
     {
         // If accountId is provided, we add it to the URL query string
         // Example: /api/expenses?accountId=1
@@ -45,7 +45,7 @@ public class ApiExpenseRepository : IExpenseRepository
             return new List<Expense>();
         }
     }
-
+    
     public async Task<Expense?> GetExpenseAsync(int id)
     {
         try
@@ -75,7 +75,7 @@ public class ApiExpenseRepository : IExpenseRepository
         await _httpClient.PutAsJsonAsync($"{_baseUrl}/expenses/{expense.Id}", expense);
     }
 
-    public async Task DeleteExpenseAsync(int id)
+    public async Task DeleteExpenseAsync(Guid id)
     {
         await _httpClient.DeleteAsync($"{_baseUrl}/expenses/{id}");
     }

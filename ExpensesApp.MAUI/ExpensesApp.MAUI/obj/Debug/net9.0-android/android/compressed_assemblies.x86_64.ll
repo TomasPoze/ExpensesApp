@@ -3,15 +3,15 @@ source_filename = "compressed_assemblies.x86_64.ll"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-android21"
 
-%struct.CompressedAssemblies = type {
-	i32, ; uint32_t count
-	ptr ; CompressedAssemblyDescriptor descriptors
-}
-
 %struct.CompressedAssemblyDescriptor = type {
 	i32, ; uint32_t uncompressed_file_size
 	i1, ; bool loaded
 	ptr ; uint8_t data
+}
+
+%struct.CompressedAssemblies = type {
+	i32, ; uint32_t count
+	ptr ; CompressedAssemblyDescriptor descriptors
 }
 
 @compressed_assemblies = dso_local local_unnamed_addr global %struct.CompressedAssemblies zeroinitializer, align 8

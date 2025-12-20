@@ -18,7 +18,7 @@ public class TransactionsController : ControllerBase
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions(
-        [FromQuery] int? accountId,
+        [FromQuery] Guid? accountId,
         [FromQuery] TransactionType? type)
     {
         var query = _context.Transactions.AsQueryable();
@@ -37,7 +37,7 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Transaction>> GetTransaction(int id)
+    public async Task<ActionResult<Transaction>> GetTransaction(Guid id)
     {
         var transaction = await _context.Transactions.FindAsync(id);
 
@@ -80,7 +80,7 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTransaction(int id, Transaction transaction)
+    public async Task<IActionResult> UpdateTransaction(Guid id, Transaction transaction)
     {
         if (id != transaction.Id)
         {
@@ -104,7 +104,7 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTransaction(int id)
+    public async Task<IActionResult> DeleteTransaction(Guid id)
     {
         var transaction = await _context.Transactions.FindAsync(id);
         if (transaction == null)
@@ -134,7 +134,7 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpGet("summary")]
-    public async Task<ActionResult<object>> GetTransactionsSummary([FromQuery] int? accountId)
+    public async Task<ActionResult<object>> GetTransactionsSummary([FromQuery] Guid? accountId)
     {
         var query = _context.Transactions.AsQueryable();
 

@@ -7,10 +7,10 @@ namespace ExpensesApp.Core.Models;
 public class Expense
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     // Foreign key to Account
-    public int AccountId { get; set; }
+    public Guid AccountId { get; set; }
 
     // Navigation property to Account
     [ForeignKey("AccountId")]

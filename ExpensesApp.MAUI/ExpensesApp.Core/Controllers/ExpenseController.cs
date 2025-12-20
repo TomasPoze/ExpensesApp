@@ -28,7 +28,7 @@ public class ExpenseController
         return await _service.UpdateExpenseAsync(expense);
     }
 
-    public async Task<(bool Success, string Message)> RemoveExpenseAsync(int id)
+    public async Task<(bool Success, string Message)> RemoveExpenseAsync(Guid id)
     {
         return await _service.DeleteExpenseAsync(id);
     }
@@ -52,5 +52,11 @@ public class ExpenseController
     {
         var expenses = await _service.GetExpensesAsync();
         return _service.GetTotalByCategory(expenses);
+    }
+
+    public async Task<IEnumerable<Expense>> GetExpensesByAccountIdAsync(Guid accountId)
+    {
+        if (accountId == Guid.Empty) return [];
+        return await _service.GetExpensesByAccountIdAsync(accountId);
     }
 }

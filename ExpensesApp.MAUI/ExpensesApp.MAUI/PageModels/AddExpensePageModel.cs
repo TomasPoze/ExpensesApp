@@ -38,7 +38,7 @@ public partial class AddExpensePageModel : ObservableObject
 
         var newExpense = new Expense(DateTime.UtcNow, Category, parsedAmount, Description ?? "")
         {
-            AccountId = 1
+            AccountId = Guid.Empty
         };
         var result = await _controller.AddExpenseAsync(newExpense);
         if (result.Success)

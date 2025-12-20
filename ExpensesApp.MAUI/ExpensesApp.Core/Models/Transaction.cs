@@ -6,10 +6,10 @@ namespace ExpensesApp.Core.Models;
 public class Transaction
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     // Foreign key to Account
-    public int AccountId { get; set; }
+    public Guid AccountId { get; set; }
 
     // Navigation property to Account
     [ForeignKey("AccountId")]
@@ -25,7 +25,7 @@ public class Transaction
     {
     }
 
-    public Transaction(int accountId, string category, decimal amount, TransactionType type, string description = "")
+    public Transaction(Guid accountId, string category, decimal amount, TransactionType type, string description = "")
     {
         AccountId = accountId;
         Category = category;
