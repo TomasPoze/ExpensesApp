@@ -5,6 +5,7 @@ using ExpensesApp.Core.Models;
 
 namespace ExpensesApp.MAUI.PageModels;
 
+[QueryProperty(nameof(AccountIdRaw),"accountId")]
 public partial class AddExpensePageModel : ObservableObject
 {
     private readonly ExpenseController _controller;
@@ -17,10 +18,26 @@ public partial class AddExpensePageModel : ObservableObject
     [ObservableProperty] private string _category;
     [ObservableProperty] private string _amount;
     [ObservableProperty] private string _description;
+    [ObservableProperty] private Guid _accountId;
 
+    public string AccountIdRaw
+    {
+        set{
+            if (!string.IsNullOrEmpty(value) && Guid.TryParse(value, out Guid parsedAccountId))
+            {
+                AccountId = parsedAccountId;
+            }}
+    }
+    
     [RelayCommand]
     private async Task AddExpenseAsync()
     {
+        if (AccountId == Guid.Empty)
+        {
+            await Shell.Current.DisplayAlert("Error", "No Account Linked!", "OK");
+            return;
+        }        
+        
         if (string.IsNullOrWhiteSpace(Category) ||
             string.IsNullOrWhiteSpace(Amount))
         {
@@ -38,8 +55,9 @@ public partial class AddExpensePageModel : ObservableObject
 
         var newExpense = new Expense(DateTime.UtcNow, Category, parsedAmount, Description ?? "")
         {
-            AccountId = Guid.Empty
+            AccountId = this.AccountId
         };
+        
         var result = await _controller.AddExpenseAsync(newExpense);
         if (result.Success)
         {
@@ -55,5 +73,11 @@ public partial class AddExpensePageModel : ObservableObject
         {
             await Shell.Current.DisplayAlert("Error", result.Message, "OK");
         }
+    }
+    
+    [RelayCommand]
+    private async Task Cancel()
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

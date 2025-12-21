@@ -4,27 +4,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
              x:Class="ExpensesApp.MAUI.Pages.AddExpensePage"
-             x:DataType="pageModels:AddExpensePageModel">
+             x:DataType="pageModels:AddExpensePageModel"
+             Shell.PresentationMode="ModalAnimated"
+             BackgroundColor="#111111">
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <Label Text="Add Expense"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+        <Grid RowDefinitions="Auto,*">
+            <HorizontalStackLayout Grid.Row="0">
+                <Button Text="X" Command="{Binding CancelCommand}" BackgroundColor="Gray"></Button>
+            </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Row="1" Padding="20">
+                <Border BackgroundColor="#222"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout>
 
-            <Label Text="Category" />
-            <Entry Text="{Binding Category}" Placeholder="Enter category" />
+                        <Label Text="Add Expense"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="White" />
 
-            <Label Text="Amount" />
-            <Entry Text="{Binding Amount}" Placeholder="Enter Amount" />
+                        <Label Text="Category" TextColor="White" />
+                        <Entry Text="{Binding Category}" Placeholder="Enter category" />
 
-            <Label Text="Description" />
-            <Entry Text="{Binding Description}" Placeholder="Enter Description" />
+                        <Label Text="Amount" TextColor="White" />
+                        <Entry Text="{Binding Amount}" Placeholder="Enter Amount" />
 
-            <Button Text="Add Expense"
-                    Command="{Binding AddExpenseCommand}"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center" />
-        </VerticalStackLayout>
+                        <Label Text="Description" TextColor="White" />
+                        <Entry Text="{Binding Description}" Placeholder="Enter Description" />
+
+                        <Button Text="Add Expense"
+                                Command="{Binding AddExpenseCommand}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

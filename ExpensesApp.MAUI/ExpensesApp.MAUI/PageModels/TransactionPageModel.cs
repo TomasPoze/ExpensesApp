@@ -18,13 +18,13 @@ public partial class TransactionPageModel : ObservableObject
     public ObservableCollection<Account> Accounts { get; } = new();
     public ObservableCollection<Expense> Expenses { get; } = new();
 
-    [ObservableProperty]
-    private Guid _accountId;
+    [ObservableProperty] private Guid _accountId;
 
     [ObservableProperty] private Account _selectedAccountObject;
 
     public bool IsOverviewMode => SelectedAccountObject == null;
     public bool IsAccountSelected => AccountId != Guid.Empty;
+    public bool IsBusy { get; set; }
 
     public TransactionPageModel(AccountController accountController, ExpenseController expenseController)
     {
@@ -58,24 +58,24 @@ public partial class TransactionPageModel : ObservableObject
     }
 
     [RelayCommand]
-    public async Task FilterByAccount(Account selectedAccount)
+    public async Task FilterByAccount(Account account)
     {
-        if (selectedAccount == null) return;
-        
-        SelectedAccountObject = selectedAccount;
-        AccountId = selectedAccount.Id;
-        //await LoadFilteredExpenses(selectedAccount.Id);
-        
+        if (account == null) return;
+
+        SelectedAccountObject = account;
+        AccountId = account.Id;
+        await LoadFilteredExpenses(account.Id);
+
         OnPropertyChanged(nameof(IsAccountSelected));
         OnPropertyChanged(nameof(IsOverviewMode));
     }
-    
+
     [RelayCommand]
     public void GoBackToOverview()
     {
         SelectedAccountObject = null;
         AccountId = Guid.Empty;
-        
+
         OnPropertyChanged(nameof(IsAccountSelected));
         OnPropertyChanged(nameof(IsOverviewMode));
     }
@@ -94,7 +94,7 @@ public partial class TransactionPageModel : ObservableObject
         // Navigate to the Add Account Page (Modal)
         await Shell.Current.GoToAsync(nameof(AddAccountPage));
     }
-    
+
     private async Task LoadAllExpenses()
     {
         var expensesList = await _expenseController.GetExpensesAsync();
@@ -103,8 +103,22 @@ public partial class TransactionPageModel : ObservableObject
 
     private async Task LoadFilteredExpenses(Guid id)
     {
-        var expensesList = await _expenseController.GetExpensesByAccountIdAsync(id);
-        UpdateExpenseList(expensesList);
+        try
+        {
+            IsBusy = true;
+
+            var expensesList = await _expenseController.GetExpensesByAccountIdAsync(id);
+
+            UpdateExpenseList(expensesList);
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error", "Could not load Expenses", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
+        }
     }
 
     private void UpdateExpenseList(IEnumerable<Expense> expensesList)

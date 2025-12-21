@@ -56,4 +56,11 @@ public class Expense
         CultureInfo ltCulture = new CultureInfo("lt-LT");
         return $"ID:{Id} Date: {Date:d}, Category: {Category}, Amount:{Amount:C}, Description: {Description}";
     }
+    
+    public string IconImageSource => Category switch
+    {
+        "Food" => "icon_food.png",
+        "Transport" => "icon_car.png",
+        _ => "icon_default.png"
+    };
 }

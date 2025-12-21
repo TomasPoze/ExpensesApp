@@ -36,6 +36,7 @@
         <member name="T:ExpensesApp.MAUI.PageModels.AddExpensePageModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Category">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._category"/>
@@ -46,11 +47,20 @@
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Description">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._description"/>
         </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AccountId">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._accountId"/>
+        </member>
         <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.addExpenseCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand"/>.</summary>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseAsync"/>.</summary>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.cancelCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Cancel"/>.</summary>
         </member>
         <member name="T:ExpensesApp.MAUI.PageModels.MainPageModel">
             <inheritdoc/>
@@ -162,11 +172,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountSection">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountSection" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountSection">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountSection" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>
@@ -201,11 +211,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountSection">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountSection" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountSection">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountSection" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>
