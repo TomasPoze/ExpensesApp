@@ -14,13 +14,22 @@ namespace ExpensesApp.MAUI.PageModels;
 
 public partial class MainPageModel : ObservableObject
 {
+    private readonly ExpenseController _expenseController;
+
     [ObservableProperty] private AccountSectionViewModel _accountSection;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(SpentPercentage))]
+    [NotifyPropertyChangedFor(nameof(IncomeSpentText))]
+    private decimal _spentThisMonth;
 
     //[ObservableProperty] private ObservableCollection<SpendingCategory> _spendingCategories;
 
-    public MainPageModel(AccountSectionViewModel accountSectionVM)
+    public MainPageModel(AccountSectionViewModel accountSectionVM, ExpenseController expenseController)
     {
         AccountSection = accountSectionVM;
+        _expenseController = expenseController;
+
         AccountSection.PropertyChanged += OnAccountSectionPropertyChanged;
     }
 
@@ -29,23 +38,47 @@ public partial class MainPageModel : ObservableObject
         if (e.PropertyName == nameof(AccountSectionViewModel.Accounts))
         {
             OnPropertyChanged(nameof(TotalMonthlyIncome));
-            OnPropertyChanged(nameof(SpentThisMonth));
             OnPropertyChanged(nameof(SpentPercentage));
             OnPropertyChanged(nameof(IncomeSpentText));
         }
     }
 
-    
     public decimal TotalMonthlyIncome => AccountSection.Accounts?.Sum(a => a.MonthlyIncome) ?? 0;
-    public decimal SpentThisMonth => AccountSection.Accounts?.SelectMany(a => a.Expenses).Sum(e => e.Amount) ?? 0;
-
     public double SpentPercentage =>
         TotalMonthlyIncome == 0 ? 0 : Math.Round((double)(SpentThisMonth / TotalMonthlyIncome) * 100, 2);
-
-    public string IncomeSpentText => $"{SpentThisMonth} € / {TotalMonthlyIncome} €";
+    public string IncomeSpentText => $"{SpentThisMonth:F2} € / {TotalMonthlyIncome:F2} €";
 
     public async Task RefreshAccountsAsync()
     {
-        await AccountSection.LoadAccountsAsync();
+        // Load Accounts (Headers, Income, Balance)
+        var accountsTask = AccountSection.LoadAccountsAsync();
+
+        // Load Expenses (For the "Spent This Month" calculation)
+        var expensesTask = CalculateSpendingAsync();
+
+        // Run both in parallel for speed
+        await Task.WhenAll(accountsTask, expensesTask);
+    }
+
+    private async Task CalculateSpendingAsync()
+    {
+        try
+        {
+            // Fetch ALL expenses (or create a specific API method for "This Month" to be faster)
+            var allExpenses = await _expenseController.GetExpensesAsync();
+
+            var currentMonth = DateTime.Now.Month;
+            var currentYear = DateTime.Now.Year;
+
+            // Filter locally
+            SpentThisMonth = allExpenses
+                .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
+                .Sum(e => e.Amount);
+        }
+        catch (Exception ex)
+        {
+            // Handle error (maybe set to 0)
+            SpentThisMonth = 0;
+        }
     }
 }

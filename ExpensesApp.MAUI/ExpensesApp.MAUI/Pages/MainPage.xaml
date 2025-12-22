@@ -54,7 +54,7 @@
                                    FontAttributes="Bold"
                                    FontSize="20"
                                    TextColor="White" />
-                            <Label Text="March 2024"
+                            <Label Text="December 2025"
                                    Grid.Column="1"
                                    FontSize="14"
                                    TextColor="#ccc" />
