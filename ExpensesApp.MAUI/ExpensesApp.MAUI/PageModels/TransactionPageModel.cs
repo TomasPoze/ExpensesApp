@@ -24,7 +24,8 @@ public partial class TransactionPageModel : ObservableObject
 
     public bool IsOverviewMode => SelectedAccountObject == null;
     public bool IsAccountSelected => AccountId != Guid.Empty;
-    public bool IsBusy { get; set; }
+
+    [ObservableProperty] public bool isBusy;
 
     public TransactionPageModel(AccountController accountController, ExpenseController expenseController)
     {
@@ -35,17 +36,29 @@ public partial class TransactionPageModel : ObservableObject
 
     public async Task InitializeAsync()
     {
-        var accountsList = await _accountController.GetAccountsAsync();
-        Accounts.Clear();
-        foreach (var account in accountsList) Accounts.Add(account);
+        IsBusy = true;
+        try
+        {
+            var accountsList = await _accountController.GetAccountsAsync();
+            Accounts.Clear();
+            foreach (var account in accountsList) Accounts.Add(account);
 
-        if (AccountId != Guid.Empty)
-        {
-            await LoadFilteredExpenses(AccountId);
+            if (AccountId != Guid.Empty)
+            {
+                await LoadFilteredExpenses(AccountId);
+            }
+            else
+            {
+                await LoadAllExpenses();
+            }
         }
-        else
+        catch (Exception ex)
         {
-            await LoadAllExpenses();
+            await Shell.Current.DisplayAlert("Error", $"Failed to load data: {ex.Message}", "OK");
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 
@@ -71,13 +84,21 @@ public partial class TransactionPageModel : ObservableObject
     }
 
     [RelayCommand]
-    public void GoBackToOverview()
+    public async Task GoBackToOverview()
     {
+        IsBusy = true;
+
         SelectedAccountObject = null;
         AccountId = Guid.Empty;
 
         OnPropertyChanged(nameof(IsAccountSelected));
         OnPropertyChanged(nameof(IsOverviewMode));
+
+        Expenses.Clear();
+
+        await InitializeAsync();
+
+        IsBusy = false;
     }
 
     [RelayCommand]
@@ -103,10 +124,9 @@ public partial class TransactionPageModel : ObservableObject
 
     private async Task LoadFilteredExpenses(Guid id)
     {
+        IsBusy = true;
         try
         {
-            IsBusy = true;
-
             var expensesList = await _expenseController.GetExpensesByAccountIdAsync(id);
 
             UpdateExpenseList(expensesList);
@@ -123,7 +143,13 @@ public partial class TransactionPageModel : ObservableObject
 
     private void UpdateExpenseList(IEnumerable<Expense> expensesList)
     {
-        Expenses.Clear();
-        foreach (var expense in expensesList) Expenses.Add(expense);
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Expenses.Clear();
+            foreach (var expense in expensesList) 
+            {
+                Expenses.Add(expense);
+            }
+        });
     }
 }

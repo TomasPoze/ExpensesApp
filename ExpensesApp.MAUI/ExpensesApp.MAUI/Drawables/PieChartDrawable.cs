@@ -13,15 +13,13 @@ public class PieChartDrawable : IDrawable
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        // ---------- DUOMENŲ GAUTIMAS ----------
-
-        // --- JEI NORI TEST VALUES, ATSIRAKINK ŠITĄ ---
+        
         float[] testValues = { 20, 40, 60, 80 };
         var items = testValues
             .Select((v, i) => new SpendingCategory($"Cat {i + 1}", (decimal)v, GetColorForIndex(i)))
             .ToList();
 
-        // --- REALŪS DUOMENYS IŠ SpendingCategories ---
+       
         var src = _itemsAccessor?.Invoke() ?? Enumerable.Empty<SpendingCategory>();
         /*var items = src
             .Where(x => x.Amount > 0)
@@ -44,8 +42,8 @@ public class PieChartDrawable : IDrawable
 
         var labels = new List<(float x, float y, float percentage)>();
 
-        // mažiausias kampas, nuo kurio rodome procentą
-        const float MinLabelAngle = 18f; // ~5% apskritimo
+        
+        const float MinLabelAngle = 18f; // ~5% 
 
 
         for (int i = 0; i < items.Count; i++)

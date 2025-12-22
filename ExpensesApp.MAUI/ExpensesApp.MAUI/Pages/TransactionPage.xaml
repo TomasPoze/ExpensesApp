@@ -16,7 +16,7 @@
     </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
-            <VerticalStackLayout IsVisible="{Binding IsOverviewMode}">
+            <VerticalStackLayout IsVisible="{Binding IsOverviewMode}" Spacing="20">
 
                 <Border StrokeShape="RoundRectangle 12"
                         BackgroundColor="#1E1E1E"
@@ -67,6 +67,81 @@
                                 Command="{Binding GoToAddAccountCommand}" />
                     </VerticalStackLayout>
                 </Border>
+                
+                <Label Text="Transactions"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+                
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                    Color="#00C853"
+                    HeightRequest="50"
+                    IsVisible="{Binding IsBusy}"
+                    
+                    />
+                <CollectionView ItemsSource="{Binding Expenses}"
+                                SelectionMode="None"
+                                HeightRequest="400">
+                    <CollectionView.EmptyView>
+                        <Label Text="No transactions yet."
+                               TextColor="Gray"
+                               HorizontalOptions="Center"
+                               Padding="20" />
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Expense">
+                            <Border StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#222"
+                                    StrokeThickness="0"
+                                    Padding="12"
+                                    Margin="0,0,0,10">
+
+                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15">
+
+                                    <Border Grid.Column="0"
+                                            BackgroundColor="#333"
+                                            StrokeShape="RoundRectangle 12"
+                                            StrokeThickness="0"
+                                            Padding="3"
+                                            >
+                                        
+                                    <Image 
+                                           Source="{Binding Category, Converter={StaticResource CategoryToIconConverter}}" 
+                                           HeightRequest="30"
+                                           WidthRequest="30"
+                                           VerticalOptions="Center" 
+                                           />
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1">
+
+                                        <Label
+                                            Text="{Binding Description}"
+                                            TextColor="White"
+                                            VerticalOptions="Center"
+                                            FontSize="16"
+                                            LineBreakMode="TailTruncation"
+                                            FontAttributes="Bold" />
+
+                                        <Label
+                                            Text="{Binding Date, StringFormat='{0:yyyy.MM.dd HH:mm}'}"
+                                            TextColor="Gray"
+                                            FontSize="12"
+                                            VerticalOptions="Center" />
+
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Amount, StringFormat='- {0:F2} €'}"
+                                           TextColor="#FF5252"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
             </VerticalStackLayout>
 
             <VerticalStackLayout IsVisible="{Binding IsAccountSelected}" Spacing="20">
@@ -96,6 +171,11 @@
                         FontAttributes="Bold"
                         CornerRadius="10"
                         HeightRequest="50" />
+                
+                <Label Text="Transactions"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White" />
 
                 <CollectionView ItemsSource="{Binding Expenses}"
                                 SelectionMode="None"
@@ -159,8 +239,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </VerticalStackLayout>
+            
+            
 
         </VerticalStackLayout>
     </ScrollView>
