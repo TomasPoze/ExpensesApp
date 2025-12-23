@@ -54,14 +54,14 @@
                                    FontAttributes="Bold"
                                    FontSize="20"
                                    TextColor="White" />
-                            <Label Text="December 2025"
+                            <Label Text="{Binding CurrentMonthYear}"
                                    Grid.Column="1"
-                                   FontSize="14"
+                                   FontSize="15"
                                    TextColor="#ccc" />
                         </Grid>
 
                         <!-- Pie chart -->
-                        <views:PieChartView x:Name="PieChartViewControl" HeightRequest="200" WidthRequest="200" />
+                        <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="200" />
 
 
                     </VerticalStackLayout>

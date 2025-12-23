@@ -1,63 +1,49 @@
-﻿using ExpensesApp.Core.Models;
+﻿using System.Diagnostics;
+using ExpensesApp.Core.Controllers;
+using ExpensesApp.Core.Models;
 
 
 public class PieChartDrawable : IDrawable
 {
-    private readonly Func<IEnumerable<SpendingCategory>> _itemsAccessor;
+    private List<SpendingCategory> _items = new();
 
-
-    public PieChartDrawable(Func<IEnumerable<SpendingCategory>> itemsAccessor)
+    public PieChartDrawable()
     {
-        _itemsAccessor = itemsAccessor;
+    }
+
+    public void UpdateData(List<SpendingCategory> items)
+    {
+        _items = items;
     }
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        
-        float[] testValues = { 20, 40, 60, 80 };
-        var items = testValues
-            .Select((v, i) => new SpendingCategory($"Cat {i + 1}", (decimal)v, GetColorForIndex(i)))
-            .ToList();
-
-       
-        var src = _itemsAccessor?.Invoke() ?? Enumerable.Empty<SpendingCategory>();
-        /*var items = src
-            .Where(x => x.Amount > 0)
-            .ToList();
-*/
-        if (!items.Any())
+        if (_items == null || !_items.Any())
             return;
 
-        float total = (float)items.Sum(x => x.Amount);
+        float total = (float)_items.Sum(x => x.Amount);
 
-
-        float radius = Math.Min(dirtyRect.Width, dirtyRect.Height) * 0.8f / 2f;
-
+        float radius = Math.Min(dirtyRect.Width, dirtyRect.Height) / 2f;
         float cx = dirtyRect.Center.X;
         float cy = dirtyRect.Center.Y;
-
-
         float startAngle = -90f;
 
-
         var labels = new List<(float x, float y, float percentage)>();
-
-        
         const float MinLabelAngle = 18f; // ~5% 
 
-
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < _items.Count; i++)
         {
-            var item = items[i];
+            var item = _items[i];
             float value = (float)item.Amount;
+            
+            if (total <= 0) break;
+            
             float pct = value / total;
             float sweep = pct * 360f;
 
-
             var slicePath = CreateSlicePath(cx, cy, radius, startAngle, sweep);
 
-
-            canvas.FillColor = item.Color ?? GetColorForIndex(i);
+            canvas.FillColor = item.Color;
             canvas.FillPath(slicePath);
 
             canvas.StrokeColor = Colors.Black;
@@ -82,7 +68,6 @@ public class PieChartDrawable : IDrawable
 
         canvas.FontColor = Colors.White;
         canvas.FontSize = 14;
-
 
         foreach (var label in labels)
         {

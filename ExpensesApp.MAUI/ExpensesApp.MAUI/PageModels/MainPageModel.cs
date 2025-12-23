@@ -16,6 +16,8 @@ public partial class MainPageModel : ObservableObject
 {
     private readonly ExpenseController _expenseController;
 
+    [ObservableProperty] public ObservableCollection<Expense> _expenses = new();
+
     [ObservableProperty] private AccountSectionViewModel _accountSection;
 
     [ObservableProperty]
@@ -23,12 +25,16 @@ public partial class MainPageModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IncomeSpentText))]
     private decimal _spentThisMonth;
 
+    [ObservableProperty] public string _currentMonthYear; 
+
     //[ObservableProperty] private ObservableCollection<SpendingCategory> _spendingCategories;
 
     public MainPageModel(AccountSectionViewModel accountSectionVM, ExpenseController expenseController)
     {
         AccountSection = accountSectionVM;
         _expenseController = expenseController;
+
+        CurrentMonthYear = DateTime.Now.ToString("MMMM yyyy");
 
         AccountSection.PropertyChanged += OnAccountSectionPropertyChanged;
     }
@@ -44,8 +50,10 @@ public partial class MainPageModel : ObservableObject
     }
 
     public decimal TotalMonthlyIncome => AccountSection.Accounts?.Sum(a => a.MonthlyIncome) ?? 0;
+
     public double SpentPercentage =>
         TotalMonthlyIncome == 0 ? 0 : Math.Round((double)(SpentThisMonth / TotalMonthlyIncome) * 100, 2);
+
     public string IncomeSpentText => $"{SpentThisMonth:F2} € / {TotalMonthlyIncome:F2} €";
 
     public async Task RefreshAccountsAsync()
@@ -74,11 +82,14 @@ public partial class MainPageModel : ObservableObject
             SpentThisMonth = allExpenses
                 .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
                 .Sum(e => e.Amount);
+
+            Expenses = new ObservableCollection<Expense>(allExpenses);
         }
         catch (Exception ex)
         {
             // Handle error (maybe set to 0)
             SpentThisMonth = 0;
+            Expenses = new ObservableCollection<Expense>();
         }
     }
 }

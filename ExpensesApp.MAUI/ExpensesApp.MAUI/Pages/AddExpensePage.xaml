@@ -25,13 +25,13 @@
                                TextColor="White" />
 
                         <Label Text="Category" TextColor="White" />
-                        <Entry Text="{Binding Category}" Placeholder="Enter category" />
+                        <Entry Text="{Binding Category}" Placeholder="Enter category" TextColor="White"/>
 
                         <Label Text="Amount" TextColor="White" />
-                        <Entry Text="{Binding Amount}" Placeholder="Enter Amount" />
+                        <Entry Text="{Binding Amount}" Placeholder="Enter Amount" TextColor="White" />
 
                         <Label Text="Description" TextColor="White" />
-                        <Entry Text="{Binding Description}" Placeholder="Enter Description" />
+                        <Entry Text="{Binding Description}" Placeholder="Enter Description" TextColor="White"/>
 
                         <Button Text="Add Expense"
                                 Command="{Binding AddExpenseCommand}"
