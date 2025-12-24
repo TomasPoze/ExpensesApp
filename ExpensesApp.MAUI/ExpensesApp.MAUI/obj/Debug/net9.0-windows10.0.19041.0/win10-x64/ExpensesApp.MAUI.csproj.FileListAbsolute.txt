@@ -1072,3 +1072,15 @@ C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\shopping_cart.scale-100.png
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\cutlery.scale-100.png
 C:\Users\Tomas\Desktop\C# Learning\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\cutlery.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\video.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\cutlery.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\question.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\car.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\fork_and_knife.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\shopping_cart.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\video.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\cutlery.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\question.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\car.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\fork_and_knife.scale-100.png
+C:\Users\tomas\Desktop\ExpensesApp\ExpensesApp\ExpensesApp.MAUI\ExpensesApp.MAUI\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\shopping_cart.scale-100.png

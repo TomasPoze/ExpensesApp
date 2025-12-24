@@ -31,7 +31,7 @@
 
                         <CollectionView ItemsSource="{Binding Accounts}"
                                         SelectionMode="None"
-                                        HeightRequest="150">
+                                        >
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="models:Account">
                                     <Grid ColumnDefinitions="*, Auto" Padding="0,8">
@@ -67,18 +67,16 @@
                                 Command="{Binding GoToAddAccountCommand}" />
                     </VerticalStackLayout>
                 </Border>
-                
+
                 <Label Text="Transactions"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White" />
-                
+
                 <ActivityIndicator IsRunning="{Binding IsBusy}"
-                    Color="#00C853"
-                    HeightRequest="50"
-                    IsVisible="{Binding IsBusy}"
-                    
-                    />
+                                   Color="#00C853"
+                                   HeightRequest="50"
+                                   IsVisible="{Binding IsBusy}" />
                 <CollectionView ItemsSource="{Binding Expenses}"
                                 SelectionMode="None"
                                 HeightRequest="400">
@@ -103,15 +101,13 @@
                                             BackgroundColor="#333"
                                             StrokeShape="RoundRectangle 12"
                                             StrokeThickness="0"
-                                            Padding="3"
-                                            >
-                                        
-                                    <Image 
-                                           Source="{Binding Category, Converter={StaticResource CategoryToIconConverter}}" 
-                                           HeightRequest="30"
-                                           WidthRequest="30"
-                                           VerticalOptions="Center" 
-                                           />
+                                            Padding="3">
+
+                                        <Image
+                                            Source="{Binding Category, Converter={StaticResource CategoryToIconConverter}}"
+                                            HeightRequest="30"
+                                            WidthRequest="30"
+                                            VerticalOptions="Center" />
                                     </Border>
 
                                     <VerticalStackLayout Grid.Column="1">
@@ -141,7 +137,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
+
             </VerticalStackLayout>
 
             <VerticalStackLayout IsVisible="{Binding IsAccountSelected}" Spacing="20">
@@ -171,7 +167,7 @@
                         FontAttributes="Bold"
                         CornerRadius="10"
                         HeightRequest="50" />
-                
+
                 <Label Text="Transactions"
                        FontSize="20"
                        FontAttributes="Bold"
@@ -201,15 +197,13 @@
                                             BackgroundColor="#333"
                                             StrokeShape="RoundRectangle 12"
                                             StrokeThickness="0"
-                                            Padding="3"
-                                            >
-                                        
-                                    <Image 
-                                           Source="{Binding Category, Converter={StaticResource CategoryToIconConverter}}" 
-                                           HeightRequest="30"
-                                           WidthRequest="30"
-                                           VerticalOptions="Center" 
-                                           />
+                                            Padding="3">
+
+                                        <Image
+                                            Source="{Binding Category, Converter={StaticResource CategoryToIconConverter}}"
+                                            HeightRequest="30"
+                                            WidthRequest="30"
+                                            VerticalOptions="Center" />
                                     </Border>
 
                                     <VerticalStackLayout Grid.Column="1">
@@ -240,8 +234,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-            
-            
+
 
         </VerticalStackLayout>
     </ScrollView>

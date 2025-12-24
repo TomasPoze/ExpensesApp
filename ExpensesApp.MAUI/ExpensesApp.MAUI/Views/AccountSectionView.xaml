@@ -5,11 +5,11 @@
              xmlns:viewModels="clr-namespace:ExpensesApp.MAUI.ViewModels"
              xmlns:models="clr-namespace:ExpensesApp.Core.Models;assembly=ExpensesApp.Core"
              x:Class="ExpensesApp.MAUI.Views.AccountSectionView"
-             x:DataType="viewModels:AccountSectionViewModel"
-             >
+             x:DataType="viewModels:AccountSectionViewModel">
     <VerticalStackLayout>
 
         <Border StrokeShape="RoundRectangle 12" BackgroundColor="#222" Padding="15" Margin="0,10">
+
             <VerticalStackLayout>
                 <Label Text="Accounts" FontSize="20" FontAttributes="Bold" TextColor="White" />
 

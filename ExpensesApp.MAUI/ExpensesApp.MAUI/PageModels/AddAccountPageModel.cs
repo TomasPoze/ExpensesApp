@@ -30,7 +30,8 @@ public partial class AddAccountPageModel : ObservableObject
             Currency = Enum.Parse<Currency>(Currency),
             Balance = Balance,
             MonthlyIncome = MonthlyIncome,
-            UserId = Guid.Parse("3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c")
+            //UserId = Guid.Parse("3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c")
+            UserId = Guid.Parse("cc486a5a-3ccf-40b3-888d-2c28e36bf54e")
             
         });
         if (result.Success)

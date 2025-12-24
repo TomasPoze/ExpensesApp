@@ -61,7 +61,7 @@
                         </Grid>
 
                         <!-- Pie chart -->
-                        <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="200" />
+                        <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="300" />
 
 
                     </VerticalStackLayout>
