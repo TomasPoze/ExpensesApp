@@ -77,6 +77,12 @@
         <member name="P:ExpensesApp.MAUI.PageModels.MainPageModel.CurrentMonthYear">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.MainPageModel._currentMonthYear"/>
         </member>
+        <member name="T:ExpensesApp.MAUI.PageModels.SpendingPageModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.Expenses">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._expenses"/>
+        </member>
         <member name="T:ExpensesApp.MAUI.PageModels.TransactionPageModel">
             <inheritdoc/>
             <inheritdoc/>

@@ -107,6 +107,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Views.Acc
 build_metadata.AdditionalFiles.TargetPath = Views\AccountSummaryView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AccountSummaryView.xaml
 
+[C:/Users/tomas/Desktop/ExpensesApp/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Views/ColumnChartView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Views.ColumnChartView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ColumnChartView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ColumnChartView.xaml
+
 [C:/Users/tomas/Desktop/ExpensesApp/ExpensesApp/ExpensesApp.MAUI/ExpensesApp.MAUI/Views/HeaderView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ExpensesApp.MAUI.Views.HeaderView.xaml

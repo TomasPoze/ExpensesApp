@@ -3,12 +3,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="using:ExpensesApp.MAUI.Views"
-             x:Class="ExpensesApp.MAUI.Pages.SpendingPage">
+             xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
+             x:Class="ExpensesApp.MAUI.Pages.SpendingPage"
+             x:DataType="pageModels:SpendingPageModel"
+             BackgroundColor="#111"
+             >
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
             <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
-            <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="200" Grid.Row="1"/>
+            <Border BackgroundColor="#222"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20"
+                    Margin="0,10">
+
+                <VerticalStackLayout Spacing="10">
+                    <!-- Pie chart -->
+                    <views:ColumnChartView Items="{Binding Expenses}" 
+                                           HeightRequest="200" />
+                    <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="300" />
+
+
+                </VerticalStackLayout>
+            </Border>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
