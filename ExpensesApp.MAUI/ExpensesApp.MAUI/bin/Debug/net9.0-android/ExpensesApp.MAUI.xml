@@ -79,9 +79,63 @@
         </member>
         <member name="T:ExpensesApp.MAUI.PageModels.SpendingPageModel">
             <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.AvailableYears">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._availableYears"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.AvailableMonths">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._availableMonths"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedYear">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._selectedYear"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedMonth">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._selectedMonth"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.FilterMode">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._filterMode"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedDate">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._selectedDate"/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.Expenses">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._expenses"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.IsDayViewVisible">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._isDayViewVisible"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.IsMonthViewVisible">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._isMonthViewVisible"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.IsYearViewVisible">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.SpendingPageModel._isYearViewVisible"/>
+        </member>
+        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnSelectedYearChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedYear"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedYear"/> is changed.</remarks>
+        </member>
+        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnSelectedMonthChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedMonth"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedMonth"/> is changed.</remarks>
+        </member>
+        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnFilterModeChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.FilterMode"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.FilterMode"/> is changed.</remarks>
+        </member>
+        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnSelectedDateChanged(System.DateTime)">
+            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedDate"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedDate"/> is changed.</remarks>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.SpendingPageModel.applyFilterCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.ApplyFilterCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.ApplyFilterCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.ApplyFilter"/>.</summary>
         </member>
         <member name="T:ExpensesApp.MAUI.PageModels.TransactionPageModel">
             <inheritdoc/>
@@ -211,6 +265,33 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentMonthYear">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentMonthYear" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AvailableYears">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AvailableYears" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AvailableMonths">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AvailableMonths" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedYear" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedMonth">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedMonth" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FilterMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FilterMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsDayViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsDayViewVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsMonthViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsMonthViewVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsYearViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsYearViewVisible" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>
         </member>
@@ -267,6 +348,33 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentMonthYear">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentMonthYear" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AvailableYears">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AvailableYears" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AvailableMonths">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AvailableMonths" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedYear" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedMonth">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedMonth" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FilterMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FilterMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsDayViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsDayViewVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsMonthViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsMonthViewVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsYearViewVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsYearViewVisible" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>

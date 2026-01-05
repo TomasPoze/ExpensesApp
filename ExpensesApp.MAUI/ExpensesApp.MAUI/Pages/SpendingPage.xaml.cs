@@ -19,7 +19,7 @@ public partial class SpendingPage : ContentPage
     {
         if (BindingContext is SpendingPageModel vm)
         {
-            await vm.SpendingChartAsync();
+            await vm.LoadExpensesAsync();
         }
     }
 }

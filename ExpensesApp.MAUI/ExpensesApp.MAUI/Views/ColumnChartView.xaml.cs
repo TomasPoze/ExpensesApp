@@ -40,7 +40,7 @@ public partial class ColumnChartView : ContentView
         var currentYear = DateTime.Now.Year;
 
         var processedData = allExpenses
-            .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
+            //.Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
             .Where(e => e.Amount > 0)
             .GroupBy(e => e.Category)
             .Select((g, index) => new SpendingCategory(
@@ -58,7 +58,7 @@ public partial class ColumnChartView : ContentView
         view.ChartGraphicsView.Invalidate();
     }
 
-    // Reuse your palette
+    
     private static readonly Color[] Palette =
     {
         Color.FromArgb("#4CC9F0"), Color.FromArgb("#4895EF"),

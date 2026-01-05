@@ -36,7 +36,7 @@ public partial class PieChartView : ContentView
         var currentYear = DateTime.Now.Year;
         
         var processedCategories = allExpenses
-            .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
+           // .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)
             .Where(e => e.Amount > 0)
             .GroupBy(e => e.Category)
             .Select((g, i) => new SpendingCategory(

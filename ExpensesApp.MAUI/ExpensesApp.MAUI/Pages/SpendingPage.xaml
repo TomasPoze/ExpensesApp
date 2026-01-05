@@ -6,26 +6,83 @@
              xmlns:pageModels="clr-namespace:ExpensesApp.MAUI.PageModels"
              x:Class="ExpensesApp.MAUI.Pages.SpendingPage"
              x:DataType="pageModels:SpendingPageModel"
-             BackgroundColor="#111"
-             >
+             BackgroundColor="#111">
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto, *" RowSpacing="10" Padding="20">
 
-            <views:HeaderView x:Name="HeaderViewControl" Grid.Row="0" />
-            <Border BackgroundColor="#222"
-                    StrokeShape="RoundRectangle 12"
-                    Padding="20"
-                    Margin="0,10">
+            <Border StrokeShape="RoundRectangle 10"
+                    StrokeThickness="0"
+                    BackgroundColor="#1E1E1E"
+                    Padding="15,10">
 
-                <VerticalStackLayout Spacing="10">
-                    <!-- Pie chart -->
-                    <views:ColumnChartView Items="{Binding Expenses}" 
-                                           HeightRequest="200" />
-                    <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="300" />
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
 
+                    <VerticalStackLayout Grid.Column="0" Spacing="2">
+                        <Label Text="Filter By" TextColor="#888" FontSize="10" />
+                        <Picker ItemsSource="{Binding FilterModes}"
+                                SelectedItem="{Binding FilterMode}"
+                                TextColor="White"
+                                TitleColor="Gray"
+                                FontSize="14" />
+                    </VerticalStackLayout>
 
-                </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" Spacing="2"
+                                         IsVisible="{Binding IsDayViewVisible}">
+                        <Label Text="Select Date" TextColor="#888" FontSize="10" />
+                        <DatePicker Date="{Binding SelectedDate}"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    Format="yyyy-MM-dd" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="2"
+                                         IsVisible="{Binding IsMonthViewVisible}">
+                        <Label Text="Select Date" TextColor="#888" FontSize="10" />
+                        <HorizontalStackLayout>
+
+                            <Picker Title="Year"
+                                    ItemsSource="{Binding AvailableYears}"
+                                    SelectedItem="{Binding SelectedYear}"
+                                    TextColor="White"/>
+                            <Picker Title="Month"
+                                    ItemsSource="{Binding AvailableMonths}"
+                                    SelectedItem="{Binding SelectedMonth}" 
+                                    TextColor="White"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="2"
+                                         IsVisible="{Binding IsYearViewVisible}">
+                        <Label Text="Select Date" TextColor="#888" FontSize="10" />
+                        <Picker Title="Year"
+                                ItemsSource="{Binding AvailableYears}"
+                                SelectedItem="{Binding SelectedYear}" 
+                                TextColor="White"/>
+                    </VerticalStackLayout>
+                </Grid>
             </Border>
+
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Spacing="10">
+                    <Border StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0"
+                            BackgroundColor="#1E1E1E"
+                            Padding="15,20">
+                        <views:ColumnChartView Items="{Binding Expenses}" HeightRequest="200" />
+                    </Border>
+
+                    <Border StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0"
+                            BackgroundColor="#1E1E1E"
+                            Padding="15,20">
+
+                        <views:PieChartView Items="{Binding Expenses}" HeightRequest="150" />
+                    </Border>
+                </VerticalStackLayout>
+
+
+            </ScrollView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
