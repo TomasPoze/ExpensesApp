@@ -45,7 +45,27 @@ public class ApiExpenseRepository : IExpenseRepository
             return new List<Expense>();
         }
     }
-    
+
+    public async Task<List<Expense>> GetExpensesByCurrentMonthAsync(Guid? accountId)
+    {
+        string url = $"{_baseUrl}/expenses/current-month";
+        if (accountId.HasValue)
+        {
+            url += $"?accountId={accountId.Value}";
+        }
+
+        try
+        {
+            var expenses = await _httpClient.GetFromJsonAsync<List<Expense>>(url);
+            return expenses ?? new List<Expense>();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error fetching expenses: {ex.Message}");
+            return new List<Expense>();
+        }
+    }
+
     public async Task<Expense?> GetExpenseAsync(int id)
     {
         try

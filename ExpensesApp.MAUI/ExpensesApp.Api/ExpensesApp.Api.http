@@ -81,6 +81,10 @@ Accept: application/json
 GET http://localhost:5033/api/expenses/summary
 Accept: application/json
 
+### Get expenses by month
+GET http://localhost:5033/api/expenses/current-month
+Accept: application/json
+
 ### Create expense
 POST http://localhost:5033/api/expenses
 Content-Type: application/json

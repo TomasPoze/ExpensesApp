@@ -73,11 +73,11 @@ public partial class MainPageModel : ObservableObject
         try
         {
             // Fetch ALL expenses (or create a specific API method for "This Month" to be faster)
-            var allExpenses = await _expenseController.GetExpensesAsync();
 
             var currentMonth = DateTime.Now.Month;
             var currentYear = DateTime.Now.Year;
 
+            var allExpenses = await _expenseController.GetExpensesByCurrentMonthAsync();
             // Filter locally
             SpentThisMonth = allExpenses
                 .Where(e => e.Date.Month == currentMonth && e.Date.Year == currentYear)

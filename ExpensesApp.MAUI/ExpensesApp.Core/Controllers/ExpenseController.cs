@@ -18,6 +18,11 @@ public class ExpenseController
         return await _service.GetExpensesAsync();
     }
 
+    public async Task<List<Expense>> GetExpensesByCurrentMonthAsync()
+    {
+        return await _service.GetCurrentMonthExpensesAsync();
+    }
+    
     public async Task<(bool Success, string Message)> AddExpenseAsync(Expense expense)
     {
         return await _service.AddExpenseAsync(expense);
@@ -59,4 +64,5 @@ public class ExpenseController
         if (accountId == Guid.Empty) return [];
         return await _service.GetExpensesByAccountIdAsync(accountId);
     }
+    
 }

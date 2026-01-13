@@ -29,16 +29,11 @@ public class ExpensesController : ControllerBase
         return await query.OrderByDescending(e => e.Date).ToListAsync();
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<Expense>> GetExpense(Guid id)
     {
         var expense = await _context.Expenses.FindAsync(id);
-
-        if (expense == null)
-        {
-            return NotFound();
-        }
-
+        if (expense == null) return NotFound();
         return expense;
     }
 
@@ -97,6 +92,23 @@ public class ExpensesController : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpGet("current-month")]
+    public async Task<ActionResult<IEnumerable<Expense>>> GetExpensesByMonth([FromQuery] Guid? accountId)
+    {
+        var query = _context.Expenses.AsQueryable();
+
+        var now = DateTime.Now;
+
+        query = query.Where(e => e.Date.Year == now.Year && e.Date.Month == now.Month);
+
+        if (accountId.HasValue)
+        {
+            query = query.Where(e => e.AccountId == accountId.Value);
+        }
+        
+        return await query.ToListAsync();
     }
 
     [HttpGet("summary")]

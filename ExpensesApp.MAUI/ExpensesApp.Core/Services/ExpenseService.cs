@@ -19,6 +19,12 @@ public class ExpenseService
     {
         return await _repository.GetExpensesAsync(accountId);
     }
+    
+    public async Task<List<Expense>> GetCurrentMonthExpensesAsync(Guid? accountId = null)
+    {
+        if (accountId == Guid.Empty) return [];
+        return await _repository.GetExpensesByCurrentMonthAsync(accountId);
+    }
 
     public async Task<IEnumerable<Expense>> GetExpensesByAccountIdAsync(Guid accountId)
     {
