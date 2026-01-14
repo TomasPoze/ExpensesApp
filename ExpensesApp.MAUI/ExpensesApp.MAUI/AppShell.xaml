@@ -37,12 +37,16 @@
         <ShellContent
             Title="Spendings"
             Icon="chart_pie.png"
-            ContentTemplate="{DataTemplate pages:SpendingPage}" />
+            ContentTemplate="{DataTemplate pages:SpendingPage}"
+            Route="Spending"
+            />
 
         <ShellContent
             Title="Transactions"
             Icon="invoice.png"
-            ContentTemplate="{DataTemplate pages:TransactionPage}" />
+            ContentTemplate="{DataTemplate pages:TransactionPage}" 
+            Route="Transactions"
+            />
         <ShellContent
             Title="Budget"
             Icon="budget.png"

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+61a49f9a4bc60870f9d2f93fc623f7856fa12c72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6f1a90f608f38675bc03b065f2d6447c19ba7ca3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

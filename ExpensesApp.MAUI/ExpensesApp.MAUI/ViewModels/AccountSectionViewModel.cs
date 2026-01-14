@@ -45,8 +45,10 @@ public partial class AccountSectionViewModel : ObservableObject
         }
     }
     
-    public async Task OnAccountTap(Account account)
+    [RelayCommand]
+    private async Task GoToAccountTransactions(Account account)
     {
-        await Shell.Current.GoToAsync($"{nameof(TransactionPage)}?accountId={account.Id}");
+        if (account == null) return;
+        await Shell.Current.GoToAsync($"///Transactions?accountId={account.Id}");
     }
 }

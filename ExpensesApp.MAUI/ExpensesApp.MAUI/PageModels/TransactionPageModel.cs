@@ -9,7 +9,7 @@ using ExpensesApp.MAUI.ViewModels;
 
 namespace ExpensesApp.MAUI.PageModels;
 
-[QueryProperty(nameof(AccountId), "accountId")]
+[QueryProperty(nameof(AccountIdQuery), "accountId")]
 public partial class TransactionPageModel : ObservableObject
 {
     private readonly AccountController _accountController;
@@ -19,6 +19,7 @@ public partial class TransactionPageModel : ObservableObject
     public ObservableCollection<Expense> Expenses { get; } = new();
 
     [ObservableProperty] private Guid _accountId;
+    [ObservableProperty] private string _accountIdQuery;
 
     [ObservableProperty] private Account _selectedAccountObject;
 
@@ -45,10 +46,17 @@ public partial class TransactionPageModel : ObservableObject
 
             if (AccountId != Guid.Empty)
             {
+                SelectedAccountObject = Accounts.FirstOrDefault(a => a.Id == AccountId);
+
+                OnPropertyChanged(nameof(IsOverviewMode));
+                OnPropertyChanged(nameof(IsAccountSelected));
                 await LoadFilteredExpenses(AccountId);
             }
             else
             {
+                SelectedAccountObject = null;
+                OnPropertyChanged(nameof(IsOverviewMode));
+                OnPropertyChanged(nameof(IsAccountSelected));
                 await LoadAllExpenses();
             }
         }
@@ -59,6 +67,14 @@ public partial class TransactionPageModel : ObservableObject
         finally
         {
             IsBusy = false;
+        }
+    }
+
+    partial void OnAccountIdQueryChanged(string value)
+    {
+        if (Guid.TryParse(value, out Guid result))
+        {
+            AccountId = result;
         }
     }
 

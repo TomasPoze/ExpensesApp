@@ -19,7 +19,7 @@ public partial class MainPageModel : ObservableObject
     [ObservableProperty] public ObservableCollection<Expense> _expenses = new();
 
     [ObservableProperty] private AccountSectionViewModel _accountSection;
-
+    
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(SpentPercentage))]
     [NotifyPropertyChangedFor(nameof(IncomeSpentText))]
@@ -92,4 +92,20 @@ public partial class MainPageModel : ObservableObject
             Expenses = new ObservableCollection<Expense>();
         }
     }
+
+    [RelayCommand]
+    public async Task GoToSpending()
+    {
+        await Shell.Current.GoToAsync("///Spending");
+    }
+    
+    [RelayCommand]
+    public async Task GoToAccountTransactions(Account account)
+    {
+        if (account == null) return;
+
+        var route = $"///Transactions?accountId={account.Id}";
+        await Shell.Current.GoToAsync(route);
+    }
+
 }
