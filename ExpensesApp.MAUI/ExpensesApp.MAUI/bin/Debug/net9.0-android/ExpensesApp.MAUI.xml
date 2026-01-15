@@ -161,9 +161,6 @@
         <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.TransactionPageModel._accountId"/>
         </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountIdQuery">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.TransactionPageModel._accountIdQuery"/>
-        </member>
         <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.SelectedAccountObject">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.TransactionPageModel._selectedAccountObject"/>
         </member>
@@ -174,11 +171,6 @@
             <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId"/> is changed.</remarks>
-        </member>
-        <member name="M:ExpensesApp.MAUI.PageModels.TransactionPageModel.OnAccountIdQueryChanged(System.String)">
-            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountIdQuery"/> just changed.</summary>
-            <param name="value">The new property value that was set.</param>
-            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountIdQuery"/> is changed.</remarks>
         </member>
         <member name="F:ExpensesApp.MAUI.PageModels.TransactionPageModel.filterByAccountCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.FilterByAccountCommand"/>.</summary>
@@ -321,9 +313,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsYearViewVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsYearViewVisible" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountIdQuery">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountIdQuery" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>
         </member>
@@ -407,9 +396,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsYearViewVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsYearViewVisible" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountIdQuery">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountIdQuery" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedAccountObject">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedAccountObject" generated properties.</summary>

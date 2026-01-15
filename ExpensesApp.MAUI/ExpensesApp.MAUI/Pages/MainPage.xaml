@@ -70,7 +70,18 @@
                         </Grid>
 
                         <!-- Pie chart -->
-                        <views:PieChartView Items="{Binding Expenses}" HeightRequest="200" WidthRequest="300" />
+                        <Grid WidthRequest="300" HeightRequest="200">
+    
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToSpendingCommand}" />
+                            </Grid.GestureRecognizers>
+
+                            <views:PieChartView Items="{Binding Expenses}" 
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Fill"
+                                                InputTransparent="True" />
+                        </Grid>
+                        
 
 
                     </VerticalStackLayout>

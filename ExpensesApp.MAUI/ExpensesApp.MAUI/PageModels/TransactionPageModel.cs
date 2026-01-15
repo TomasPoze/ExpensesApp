@@ -9,8 +9,7 @@ using ExpensesApp.MAUI.ViewModels;
 
 namespace ExpensesApp.MAUI.PageModels;
 
-[QueryProperty(nameof(AccountIdQuery), "accountId")]
-public partial class TransactionPageModel : ObservableObject
+public partial class TransactionPageModel : ObservableObject, IQueryAttributable
 {
     private readonly AccountController _accountController;
     private readonly ExpenseController _expenseController;
@@ -19,8 +18,7 @@ public partial class TransactionPageModel : ObservableObject
     public ObservableCollection<Expense> Expenses { get; } = new();
 
     [ObservableProperty] private Guid _accountId;
-    [ObservableProperty] private string _accountIdQuery;
-
+    
     [ObservableProperty] private Account _selectedAccountObject;
 
     public bool IsOverviewMode => SelectedAccountObject == null;
@@ -70,11 +68,27 @@ public partial class TransactionPageModel : ObservableObject
         }
     }
 
-    partial void OnAccountIdQueryChanged(string value)
+    
+    
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        if (Guid.TryParse(value, out Guid result))
+        if (query.ContainsKey("accountId"))
         {
-            AccountId = result;
+            var idString = query["accountId"].ToString();
+
+            if (Guid.TryParse(idString, out Guid result))
+            {
+                AccountId = result;
+
+                if (AccountId != Guid.Empty)
+                {
+                    _ = LoadFilteredExpenses(AccountId);
+                    
+                    SelectedAccountObject = Accounts.FirstOrDefault(a => a.Id == AccountId);
+                    OnPropertyChanged(nameof(IsOverviewMode));
+                    OnPropertyChanged(nameof(IsAccountSelected));
+                }
+            }
         }
     }
 
@@ -168,4 +182,6 @@ public partial class TransactionPageModel : ObservableObject
             }
         });
     }
+
+    
 }
