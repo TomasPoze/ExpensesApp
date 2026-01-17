@@ -4,9 +4,10 @@ namespace ExpensesApp.MAUI.Drawables;
 
 public class ColumnChartDrawable : IDrawable
 {
-    private List<SpendingCategory> _items = new();
+    private List<ChartItem> _items = new();
+    
 
-    public void UpdateData(List<SpendingCategory> items)
+    public void UpdateData(List<ChartItem> items)
     {
         _items = items;
     }
@@ -22,7 +23,7 @@ public class ColumnChartDrawable : IDrawable
 
         // 2. Calculate Scaling
         // Find the tallest bar value so we can scale everything relative to it
-        float maxAmount = (float)_items.Max(x => x.Amount);
+        float maxAmount = (float)_items.Max(x => x.Value);
         if (maxAmount <= 0) maxAmount = 1; // Prevent divide by zero
 
         // Calculate width per bar
@@ -33,7 +34,7 @@ public class ColumnChartDrawable : IDrawable
         float currentX = margin;
         foreach (var item in _items)
         {
-            float val = (float)item.Amount;
+            float val = (float)item.Value;
             
             // Calculate Bar Height relative to the maximum value
             float barHeight = (val / maxAmount) * usableHeight;
@@ -54,9 +55,9 @@ public class ColumnChartDrawable : IDrawable
             canvas.FontSize = 10;
             
             // Draw only the first 3 letters if name is long
-            string label = item.Name.Length > 3 ? item.Name.Substring(0, 3) : item.Name;
+            //string label = item.Label.Length > 3 ? item.Label.Substring(0, 3) : item.Label;
             
-            canvas.DrawString(label, x, margin + usableHeight + 5, columnWidth, bottomLabelHeight, HorizontalAlignment.Center, VerticalAlignment.Top);
+            canvas.DrawString(item.Label, x, margin + usableHeight + 5, columnWidth, bottomLabelHeight, HorizontalAlignment.Center, VerticalAlignment.Top);
 
             // C. Draw Amount (Optional, above bar)
             canvas.FontSize = 9;

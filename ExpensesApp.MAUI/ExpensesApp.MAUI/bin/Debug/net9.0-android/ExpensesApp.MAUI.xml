@@ -135,7 +135,7 @@
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.SelectedMonth"/> is changed.</remarks>
         </member>
-        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnFilterModeChanged(System.String)">
+        <member name="M:ExpensesApp.MAUI.PageModels.SpendingPageModel.OnFilterModeChanged(ExpensesApp.MAUI.Views.FilterMode)">
             <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.FilterMode"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.SpendingPageModel.FilterMode"/> is changed.</remarks>

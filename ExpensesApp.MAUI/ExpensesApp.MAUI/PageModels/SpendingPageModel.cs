@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ExpensesApp.Core.Controllers;
 using ExpensesApp.Core.Models;
+using ExpensesApp.MAUI.Views;
+using FilterMode = ExpensesApp.MAUI.Views.FilterMode;
 
 namespace ExpensesApp.MAUI.PageModels;
 
@@ -19,11 +21,11 @@ public partial class SpendingPageModel : ObservableObject
     public SpendingPageModel(ExpenseController expenseController)
     {
         _expenseController = expenseController;
-        FilterMode = "Month";
+        FilterMode = FilterMode.Month;
         SelectedDate = DateTime.Now;
     }
 
-    [ObservableProperty] private string _filterMode;
+    [ObservableProperty] private FilterMode _filterMode;
 
 
     [ObservableProperty] private DateTime _selectedDate;
@@ -33,7 +35,7 @@ public partial class SpendingPageModel : ObservableObject
     [ObservableProperty] private bool _isDayViewVisible = false;
     [ObservableProperty] private bool _isMonthViewVisible = false;
     [ObservableProperty] private bool _isYearViewVisible = false;
-    public List<string> FilterModes => new() { "Year", "Month", "Day" };
+    public List<FilterMode> FilterModes => Enum.GetValues(typeof(FilterMode)).Cast<FilterMode>().ToList();
 
     public async Task LoadExpensesAsync()
     {
@@ -107,14 +109,14 @@ public partial class SpendingPageModel : ObservableObject
 
         switch (FilterMode)
         {
-            case "Year":
+            case FilterMode.Year:
                 filtered = filtered.Where(e => e.Date.Year == SelectedYear);
                 break;
-            case "Month":
+            case FilterMode.Month:
                 filtered = filtered.Where(e => e.Date.Year == SelectedYear &&
                                                e.Date.Month == SelectedMonth);
                 break;
-            case "Day":
+            case FilterMode.Day:
                 filtered = filtered.Where(e => e.Date.Date == SelectedDate.Date);
                 break;
         }
@@ -122,15 +124,47 @@ public partial class SpendingPageModel : ObservableObject
         Expenses = new ObservableCollection<Expense>(filtered);
     }
 
-    partial void OnFilterModeChanged(string value)
+    partial void OnFilterModeChanged(FilterMode value)
     {
-        IsDayViewVisible = value == "Day";
-        IsMonthViewVisible = value == "Month";
-        IsYearViewVisible = value == "Year";
+        IsDayViewVisible = value == FilterMode.Day;
+        IsMonthViewVisible = value == FilterMode.Month;
+        IsYearViewVisible = value == FilterMode.Year;
+        SyncChartDate();
         ApplyFilter();
     }
 
-    partial void OnSelectedDateChanged(DateTime value) => ApplyFilter();
-    partial void OnSelectedYearChanged(int value) => UpdateMonthsForYear(value);
-    partial void OnSelectedMonthChanged(int value) => ApplyFilter();
+    partial void OnSelectedYearChanged(int value) 
+    {
+        UpdateMonthsForYear(value);
+        SyncChartDate();
+        ApplyFilter();
+    }
+
+    partial void OnSelectedMonthChanged(int value) 
+    {
+        SyncChartDate();
+        ApplyFilter();
+    }
+    
+    partial void OnSelectedDateChanged(DateTime value)
+    {
+        // Reverse Sync: If using DatePicker (Day Mode), update dropdowns to match
+        if (FilterMode == FilterMode.Day)
+        {
+            if (SelectedYear != value.Year) SelectedYear = value.Year;
+            if (SelectedMonth != value.Month) SelectedMonth = value.Month;
+        }
+        ApplyFilter();
+    }
+    
+    private void SyncChartDate()
+    {
+        int y = SelectedYear > 0 ? SelectedYear : DateTime.Now.Year;
+        int m = SelectedMonth > 0 ? SelectedMonth : DateTime.Now.Month;
+
+        if (SelectedDate.Year != y || SelectedMonth != m)
+        {
+            SelectedDate = new DateTime(y, m, 1);
+        }
+    }
 }

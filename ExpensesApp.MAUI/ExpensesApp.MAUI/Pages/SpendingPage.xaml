@@ -68,7 +68,11 @@
                             StrokeThickness="0"
                             BackgroundColor="#1E1E1E"
                             Padding="15,20">
-                        <views:ColumnChartView Items="{Binding Expenses}" HeightRequest="200" />
+                        
+                        <views:ColumnChartView 
+                            Items="{Binding Expenses}" 
+                            FilterMode="{Binding FilterMode}" 
+                            SelectedDate="{Binding SelectedDate}" />
                     </Border>
 
                     <Border StrokeShape="RoundRectangle 10"

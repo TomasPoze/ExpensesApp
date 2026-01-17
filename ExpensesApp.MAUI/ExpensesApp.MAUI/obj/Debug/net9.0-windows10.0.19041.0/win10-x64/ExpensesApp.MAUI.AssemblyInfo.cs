@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+a069112d53f3b799424c1e82b0e9937e08b6dae6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+0ca69b0098e325967e1e2124dcdafa83ce26e635")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExpensesApp.MAUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
