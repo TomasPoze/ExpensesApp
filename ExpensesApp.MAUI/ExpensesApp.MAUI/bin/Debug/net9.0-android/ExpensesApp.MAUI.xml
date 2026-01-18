@@ -12,14 +12,14 @@
         <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Name">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._name"/>
         </member>
-        <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Currency">
-            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._currency"/>
-        </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.Balance">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._balance"/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.MonthlyIncome">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._monthlyIncome"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.SelectedCurrency">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel._selectedCurrency"/>
         </member>
         <member name="F:ExpensesApp.MAUI.PageModels.AddAccountPageModel.saveCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddAccountPageModel.SaveCommand"/>.</summary>
@@ -247,14 +247,14 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Currency">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Currency" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Balance">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Balance" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MonthlyIncome">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MonthlyIncome" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedCurrency">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedCurrency" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Category">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Category" generated properties.</summary>
@@ -331,14 +331,14 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Currency">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Currency" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Balance">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Balance" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MonthlyIncome">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MonthlyIncome" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedCurrency">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedCurrency" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Category">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Category" generated properties.</summary>

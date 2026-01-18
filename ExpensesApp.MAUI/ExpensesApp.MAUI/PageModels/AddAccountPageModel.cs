@@ -16,9 +16,10 @@ public partial class AddAccountPageModel : ObservableObject
     }
 
     [ObservableProperty] private string _name;
-    [ObservableProperty] private string _currency; // pvz. "EUR"
     [ObservableProperty] private decimal _balance;
     [ObservableProperty] private decimal _monthlyIncome;
+    [ObservableProperty] private Currency _selectedCurrency = Currency.EUR;
+    public List<Currency> Currencies => Enum.GetValues(typeof(Currency)).Cast<Currency>().ToList();
 
 
     [RelayCommand]
@@ -27,11 +28,11 @@ public partial class AddAccountPageModel : ObservableObject
         var result = await _accountController.AddAccountAsync(new Account
         {
             AccountName = Name,
-            Currency = Enum.Parse<Currency>(Currency),
+            Currency = SelectedCurrency,
             Balance = Balance,
             MonthlyIncome = MonthlyIncome,
-            //UserId = Guid.Parse("3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c")
-            UserId = Guid.Parse("cc486a5a-3ccf-40b3-888d-2c28e36bf54e")
+            UserId = Guid.Parse("3b4fdc11-e7ae-4a01-93e6-cce7ce5dd31c")
+            //UserId = Guid.Parse("cc486a5a-3ccf-40b3-888d-2c28e36bf54e")
             
         });
         if (result.Success)

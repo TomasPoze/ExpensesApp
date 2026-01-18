@@ -29,7 +29,8 @@
                         <Entry Text="{Binding Name}" Placeholder="Enter category" TextColor="White" />
 
                         <Label Text="Currency" TextColor="White" />
-                        <Entry Text="{Binding Currency}" Placeholder="Enter Currency" TextColor="White"/>
+                        <Picker Title="Select currency" ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}" TextColor="White"/>
+                        
 
                         <Label Text="Balance" TextColor="White" />
                         <Entry Text="{Binding Balance}" Placeholder="Enter Balance" TextColor="White"/>
