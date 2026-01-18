@@ -28,6 +28,7 @@
                 <!-- Income spent section -->
                 <Border BackgroundColor="#222"
                         StrokeShape="RoundRectangle 12"
+                        StrokeThickness="0"
                         Padding="20">
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToSpendingCommand}"/>
@@ -51,6 +52,7 @@
                         StrokeShape="RoundRectangle 12"
                         Padding="20"
                         Margin="0,10"
+                        StrokeThickness="0"
                         >
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToSpendingCommand}"/>

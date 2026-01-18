@@ -8,7 +8,11 @@
              x:DataType="viewModels:AccountSectionViewModel">
     <VerticalStackLayout>
 
-        <Border StrokeShape="RoundRectangle 12" BackgroundColor="#222" Padding="15" Margin="0,10">
+        <Border StrokeShape="RoundRectangle 12" 
+                BackgroundColor="#222"
+                Padding="15"
+                StrokeThickness="0"
+                Margin="0,10">
             
             <VerticalStackLayout>
                 <Label Text="Accounts" FontSize="20" FontAttributes="Bold" TextColor="White" />

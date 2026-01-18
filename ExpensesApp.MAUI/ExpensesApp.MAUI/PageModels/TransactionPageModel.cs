@@ -18,7 +18,7 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
     public ObservableCollection<Expense> Expenses { get; } = new();
 
     [ObservableProperty] private Guid _accountId;
-    
+
     [ObservableProperty] private Account _selectedAccountObject;
 
     public bool IsOverviewMode => SelectedAccountObject == null;
@@ -68,8 +68,19 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
         }
     }
 
-    
-    
+    [RelayCommand]
+    public async Task EditTransaction(Expense expense)
+    {
+        if (expense == null) return;
+
+        var navigationParameter = new Dictionary<string, object>
+        {
+            { "ExpenseToEdit", expense }
+        };
+        
+        await Shell.Current.GoToAsync("AddExpensePage", navigationParameter);
+    }
+
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("accountId"))
@@ -83,7 +94,7 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
                 if (AccountId != Guid.Empty)
                 {
                     _ = LoadFilteredExpenses(AccountId);
-                    
+
                     SelectedAccountObject = Accounts.FirstOrDefault(a => a.Id == AccountId);
                     OnPropertyChanged(nameof(IsOverviewMode));
                     OnPropertyChanged(nameof(IsAccountSelected));
@@ -176,12 +187,10 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
         MainThread.BeginInvokeOnMainThread(() =>
         {
             Expenses.Clear();
-            foreach (var expense in expensesList) 
+            foreach (var expense in expensesList)
             {
                 Expenses.Add(expense);
             }
         });
     }
-
-    
 }

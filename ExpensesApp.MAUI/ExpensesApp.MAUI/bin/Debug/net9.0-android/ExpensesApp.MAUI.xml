@@ -37,6 +37,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.Category">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._category"/>
@@ -50,11 +51,28 @@
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AccountId">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._accountId"/>
         </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.IsEditMode">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._isEditMode"/>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.ExpenseToEdit">
+            <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel._expenseToEdit"/>
+        </member>
+        <member name="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.OnExpenseToEditChanged(ExpensesApp.Core.Models.Expense)">
+            <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.ExpenseToEdit"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.ExpenseToEdit"/> is changed.</remarks>
+        </member>
         <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.addExpenseCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand"/>.</summary>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.AddExpenseAsync"/>.</summary>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.deleteExpenseCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.DeleteExpenseCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.DeleteExpenseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.AddExpensePageModel.DeleteExpenseAsync"/>.</summary>
         </member>
         <member name="F:ExpensesApp.MAUI.PageModels.AddExpensePageModel.cancelCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.AddExpensePageModel.CancelCommand"/>.</summary>
@@ -157,6 +175,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId">
             <inheritdoc cref="F:ExpensesApp.MAUI.PageModels.TransactionPageModel._accountId"/>
@@ -171,6 +190,12 @@
             <summary>Executes the logic for when <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.AccountId"/> is changed.</remarks>
+        </member>
+        <member name="F:ExpensesApp.MAUI.PageModels.TransactionPageModel.editTransactionCommand">
+            <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.EditTransactionCommand"/>.</summary>
+        </member>
+        <member name="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.EditTransactionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ExpensesApp.MAUI.PageModels.TransactionPageModel.EditTransaction(ExpensesApp.Core.Models.Expense)"/>.</summary>
         </member>
         <member name="F:ExpensesApp.MAUI.PageModels.TransactionPageModel.filterByAccountCommand">
             <summary>The backing field for <see cref="P:ExpensesApp.MAUI.PageModels.TransactionPageModel.FilterByAccountCommand"/>.</summary>
@@ -268,6 +293,12 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AccountId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AccountId" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsEditMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsEditMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExpenseToEdit">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExpenseToEdit" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Expenses">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Expenses" generated properties.</summary>
         </member>
@@ -351,6 +382,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AccountId">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AccountId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsEditMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsEditMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExpenseToEdit">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExpenseToEdit" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Expenses">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Expenses" generated properties.</summary>

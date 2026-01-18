@@ -25,18 +25,26 @@
                                TextColor="White" />
 
                         <Label Text="Category" TextColor="White" />
-                        <Entry Text="{Binding Category}" Placeholder="Enter category" TextColor="White"/>
+                        <Entry Text="{Binding Category}" Placeholder="Enter category" TextColor="White" />
 
                         <Label Text="Amount" TextColor="White" />
                         <Entry Text="{Binding Amount}" Placeholder="Enter Amount" TextColor="White" />
 
                         <Label Text="Description" TextColor="White" />
-                        <Entry Text="{Binding Description}" Placeholder="Enter Description" TextColor="White"/>
+                        <Entry Text="{Binding Description}" Placeholder="Enter Description" TextColor="White" />
 
                         <Button Text="Add Expense"
                                 Command="{Binding AddExpenseCommand}"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center" />
+
+                        <Button Text="Delete Expense"
+                                Command="{Binding DeleteExpenseCommand}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                BackgroundColor="#FF5252"
+                                IsVisible="{Binding IsEditMode}"
+                                />
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>

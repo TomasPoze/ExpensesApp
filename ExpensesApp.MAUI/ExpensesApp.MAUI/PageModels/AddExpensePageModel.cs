@@ -6,7 +6,7 @@ using ExpensesApp.Core.Models;
 namespace ExpensesApp.MAUI.PageModels;
 
 [QueryProperty(nameof(AccountIdRaw),"accountId")]
-public partial class AddExpensePageModel : ObservableObject
+public partial class AddExpensePageModel : ObservableObject, IQueryAttributable
 {
     private readonly ExpenseController _controller;
 
@@ -19,7 +19,23 @@ public partial class AddExpensePageModel : ObservableObject
     [ObservableProperty] private string _amount;
     [ObservableProperty] private string _description;
     [ObservableProperty] private Guid _accountId;
+    [ObservableProperty] private bool _isEditMode;
 
+    [ObservableProperty]
+    private Expense _expenseToEdit;
+    
+    partial void OnExpenseToEditChanged(Expense value)
+    {
+        if (value != null)
+        {
+            Category = value.Category;
+            Amount = value.Amount.ToString();
+            Description = value.Description;
+            AccountId = value.AccountId;
+            IsEditMode = (value != null);
+        }
+    }
+    
     public string AccountIdRaw
     {
         set{
@@ -53,15 +69,35 @@ public partial class AddExpensePageModel : ObservableObject
             return;
         }
 
-        var newExpense = new Expense(DateTime.UtcNow, Category, parsedAmount, Description ?? "")
+        bool isSuccess = false;
+        string message = string.Empty;
+
+        if (ExpenseToEdit != null)
         {
-            AccountId = this.AccountId
-        };
+            ExpenseToEdit.Category = Category;
+            ExpenseToEdit.Amount = parsedAmount;
+            ExpenseToEdit.Description = Description ?? "";
+            ExpenseToEdit.AccountId = AccountId;
+
+            var result = await _controller.EditExpenseAsync(ExpenseToEdit);
+            isSuccess = result.Success;
+            message = result.Message;
+        }
+        else
+        {
+            var newExpense = new Expense(DateTime.UtcNow, Category, parsedAmount, Description ?? "")
+            {
+                AccountId = this.AccountId
+            };
+            var result = await _controller.AddExpenseAsync(newExpense);
+            isSuccess = result.Success;
+            message = result.Message;
+        }
         
-        var result = await _controller.AddExpenseAsync(newExpense);
-        if (result.Success)
+        if (isSuccess)
         {
-            await Shell.Current.DisplayAlert("Success", "Expense added.", "OK");
+            string successMsg = ExpenseToEdit != null ? "Transaction Updated!" : "Expense Added!";
+            await Shell.Current.DisplayAlert("Success", successMsg, "OK");
 
             Category = string.Empty;
             Amount = string.Empty;
@@ -71,13 +107,58 @@ public partial class AddExpensePageModel : ObservableObject
         }
         else
         {
-            await Shell.Current.DisplayAlert("Error", result.Message, "OK");
+            await Shell.Current.DisplayAlert("Error", message, "OK");
+        }
+    }
+
+    [RelayCommand]
+    private async Task DeleteExpenseAsync()
+    {
+        if(ExpenseToEdit == null) return;
+        
+        var result = await Shell.Current.DisplayAlert("Delete Expense", "Are you sure you want to delete this expense?", "Yes", "No");
+        if (result)
+        {
+            await _controller.RemoveExpenseAsync(ExpenseToEdit.Id);
+            await Shell.Current.GoToAsync("..");
         }
     }
     
     [RelayCommand]
     private async Task Cancel()
     {
+        ExpenseToEdit = null;
         await Shell.Current.GoToAsync("..");
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.ContainsKey("ExpenseToEdit"))
+        {
+            var expense = query["ExpenseToEdit"] as Expense;
+            
+            ExpenseToEdit = expense;
+            
+            Category = expense.Category;
+            Amount = expense.Amount.ToString();
+            Description = expense.Description;
+            AccountId = expense.AccountId;
+            
+            IsEditMode = true;
+        }
+        else
+        {
+            ExpenseToEdit = null;
+            Category = string.Empty;
+            Amount = string.Empty;
+            Description = string.Empty;
+            IsEditMode = false;
+
+            if (query.ContainsKey("accountId"))
+            {
+                if(Guid.TryParse(query["accountId"].ToString(), out Guid id))
+                    AccountId = id;
+            }
+        }
     }
 }
