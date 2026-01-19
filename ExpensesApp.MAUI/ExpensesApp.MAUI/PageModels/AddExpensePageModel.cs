@@ -19,7 +19,14 @@ public partial class AddExpensePageModel : ObservableObject, IQueryAttributable
     [ObservableProperty] private string _amount;
     [ObservableProperty] private string _description;
     [ObservableProperty] private Guid _accountId;
+    
+    [NotifyPropertyChangedFor(nameof(PageTitle))]
+    [NotifyPropertyChangedFor(nameof(ButtonText))]
     [ObservableProperty] private bool _isEditMode;
+
+    public string PageTitle => IsEditMode ? "Edit Expense": "Add Expense";
+    public string ButtonText => IsEditMode ? "Update Expense" : "Add Expense";
+    
 
     [ObservableProperty]
     private Expense _expenseToEdit;

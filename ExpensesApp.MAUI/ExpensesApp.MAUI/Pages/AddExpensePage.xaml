@@ -15,10 +15,12 @@
             <VerticalStackLayout Grid.Row="1" Padding="20">
                 <Border BackgroundColor="#222"
                         StrokeShape="RoundRectangle 12"
-                        Padding="20">
+                        Padding="20"
+                        StrokeThickness="0">
+
                     <VerticalStackLayout>
 
-                        <Label Text="Add Expense"
+                        <Label Text="{Binding PageTitle}"
                                FontSize="24"
                                FontAttributes="Bold"
                                HorizontalOptions="Center"
@@ -33,18 +35,44 @@
                         <Label Text="Description" TextColor="White" />
                         <Entry Text="{Binding Description}" Placeholder="Enter Description" TextColor="White" />
 
-                        <Button Text="Add Expense"
-                                Command="{Binding AddExpenseCommand}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center" />
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="15" IsVisible="False">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEditMode}" Value="True">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Grid.Triggers>
 
-                        <Button Text="Delete Expense"
-                                Command="{Binding DeleteExpenseCommand}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
-                                BackgroundColor="#FF5252"
-                                IsVisible="{Binding IsEditMode}"
-                                />
+                            <Button Grid.Column="1"
+                                    Text="Delete"
+                                    Command="{Binding DeleteExpenseCommand}"
+                                    BackgroundColor="#2A2A2A" 
+                                    TextColor="#FF5252"
+                                    CornerRadius="12"
+                                    FontAttributes="Bold"/>
+
+                            <Button Grid.Column="0"
+                                    Text="Update" 
+                                    Command="{Binding AddExpenseCommand}"
+                                    BackgroundColor="#6200EE"
+                                    TextColor="White"
+                                    CornerRadius="12"
+                                    FontAttributes="Bold"/>
+                        </Grid>
+
+                        <Button Text="Add Expense" 
+                                Command="{Binding AddExpenseCommand}"
+                                BackgroundColor="#6200EE"
+                                TextColor="White"
+                                CornerRadius="12"
+                                FontAttributes="Bold"
+                                HeightRequest="50"
+                                IsVisible="True">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsEditMode}" Value="True">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>
