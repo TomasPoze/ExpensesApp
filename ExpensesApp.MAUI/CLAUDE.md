@@ -27,6 +27,26 @@ dotnet ef migrations add <MigrationName> --project ExpensesApp.Api
 dotnet ef database update --project ExpensesApp.Api
 ```
 
+## Testing
+
+No test project is currently configured. To add tests:
+
+1. Create a test project:
+```bash
+dotnet new xunit -n ExpensesApp.Tests
+dotnet sln ExpensesApp.MAUI.sln add ExpensesApp.Tests/ExpensesApp.Tests.csproj
+```
+
+2. Add project references:
+```bash
+dotnet add ExpensesApp.Tests/ExpensesApp.Tests.csproj reference ExpensesApp.Core/ExpensesApp.Core.csproj
+```
+
+3. Run tests:
+```bash
+dotnet test
+```
+
 ## Architecture Overview
 
 This is an expense tracking application with three projects:
