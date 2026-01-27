@@ -62,6 +62,9 @@ desktop.ini
 *.tar
 *.gz
 
+# AI assistance files
+CLAUDE.md
+
 # Maui cache
 *.mauiasset
 
