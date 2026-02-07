@@ -17,14 +17,19 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
     public ObservableCollection<Account> Accounts { get; } = new();
     public ObservableCollection<Expense> Expenses { get; } = new();
 
-    [ObservableProperty] private Guid _accountId;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsAccountSelected))]
+    private Guid _accountId;
 
-    [ObservableProperty] private Account _selectedAccountObject;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsOverviewMode))]
+    private Account _selectedAccountObject;
 
     public bool IsOverviewMode => SelectedAccountObject == null;
     public bool IsAccountSelected => AccountId != Guid.Empty;
 
     [ObservableProperty] public bool isBusy;
+    private bool _queryApplied;
 
     public TransactionPageModel(AccountController accountController, ExpenseController expenseController)
     {
@@ -38,10 +43,18 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
         IsBusy = true;
         try
         {
+            if (!_queryApplied)
+            {
+                AccountId = Guid.Empty;
+                SelectedAccountObject = null;
+            }
+
+            _queryApplied = false;
+            
             var accountsList = await _accountController.GetAccountsAsync();
             Accounts.Clear();
             foreach (var account in accountsList) Accounts.Add(account);
-
+            
             if (AccountId != Guid.Empty)
             {
                 SelectedAccountObject = Accounts.FirstOrDefault(a => a.Id == AccountId);
@@ -83,6 +96,7 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
+        _queryApplied = true;
         if (query.ContainsKey("accountId"))
         {
             var idString = query["accountId"].ToString();
@@ -90,17 +104,17 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
             if (Guid.TryParse(idString, out Guid result))
             {
                 AccountId = result;
-
-                if (AccountId != Guid.Empty)
-                {
-                    _ = LoadFilteredExpenses(AccountId);
-
                     SelectedAccountObject = Accounts.FirstOrDefault(a => a.Id == AccountId);
-                    OnPropertyChanged(nameof(IsOverviewMode));
-                    OnPropertyChanged(nameof(IsAccountSelected));
-                }
+                    _ = LoadFilteredExpenses(AccountId);
+             return;
             }
         }
+        
+            AccountId = Guid.Empty;
+            SelectedAccountObject = null;
+            _ = LoadAllExpenses();
+      
+        
     }
 
     async partial void OnAccountIdChanged(Guid value)
@@ -115,13 +129,8 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
     public async Task FilterByAccount(Account account)
     {
         if (account == null) return;
-
         SelectedAccountObject = account;
         AccountId = account.Id;
-        await LoadFilteredExpenses(account.Id);
-
-        OnPropertyChanged(nameof(IsAccountSelected));
-        OnPropertyChanged(nameof(IsOverviewMode));
     }
 
     [RelayCommand]
@@ -129,15 +138,9 @@ public partial class TransactionPageModel : ObservableObject, IQueryAttributable
     {
         IsBusy = true;
 
-        SelectedAccountObject = null;
         AccountId = Guid.Empty;
-
-        OnPropertyChanged(nameof(IsAccountSelected));
-        OnPropertyChanged(nameof(IsOverviewMode));
-
-        Expenses.Clear();
-
-        await InitializeAsync();
+        SelectedAccountObject = null;
+        await LoadAllExpenses();
 
         IsBusy = false;
     }
