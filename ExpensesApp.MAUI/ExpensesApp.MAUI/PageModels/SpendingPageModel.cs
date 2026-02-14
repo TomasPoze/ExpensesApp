@@ -66,12 +66,18 @@ public partial class SpendingPageModel : ObservableObject
             .Distinct()
             .OrderBy(m => m)
             .ToList();
+        
+        var lastMonthByYear = _allExpensesCache
+            .GroupBy(e => e.Date.Year)
+            .ToDictionary(g => g.Key, g => g.Max(e => e.Date.Month));
+        
 
         AvailableYears = new ObservableCollection<int>(years);
         //AvailableMonths = new ObservableCollection<int>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 
         if (years.Any()) SelectedYear = years.Last();
-        //if (months.Any()) SelectedMonth = months.Last();
+        if (months.Any()) SelectedMonth = lastMonthByYear[SelectedYear];
+        
     }
 
     public void UpdateMonthsForYear(int year)
@@ -85,7 +91,7 @@ public partial class SpendingPageModel : ObservableObject
             .OrderBy(m => m)
             .ToList();
 
-        AvailableMonths.Clear();
+        //AvailableMonths.Clear();
 
         AvailableMonths = new ObservableCollection<int>(filtered);
 
@@ -113,8 +119,7 @@ public partial class SpendingPageModel : ObservableObject
                 filtered = filtered.Where(e => e.Date.Year == SelectedYear);
                 break;
             case FilterMode.Month:
-                filtered = filtered.Where(e => e.Date.Year == SelectedYear &&
-                                               e.Date.Month == SelectedMonth);
+                filtered = filtered.Where(e => e.Date.Year == SelectedYear && e.Date.Month == SelectedMonth);
                 break;
             case FilterMode.Day:
                 filtered = filtered.Where(e => e.Date.Date == SelectedDate.Date);
@@ -137,13 +142,11 @@ public partial class SpendingPageModel : ObservableObject
     {
         UpdateMonthsForYear(value);
         SyncChartDate();
-        ApplyFilter();
     }
 
     partial void OnSelectedMonthChanged(int value) 
     {
         SyncChartDate();
-        ApplyFilter();
     }
     
     partial void OnSelectedDateChanged(DateTime value)
@@ -161,10 +164,15 @@ public partial class SpendingPageModel : ObservableObject
     {
         int y = SelectedYear > 0 ? SelectedYear : DateTime.Now.Year;
         int m = SelectedMonth > 0 ? SelectedMonth : DateTime.Now.Month;
-
-        if (SelectedDate.Year != y || SelectedMonth != m)
+        Console.WriteLine($"🔄 SyncChartDate: Current={SelectedDate:yyyy-MM}, Target={y}-{m:D2}");
+        if (SelectedDate.Year != y || SelectedDate.Month != m)
         {
+            Console.WriteLine($"   → Setting SelectedDate to {y}-{m:D2}-01");
             SelectedDate = new DateTime(y, m, 1);
+        }
+        else
+        {
+            Console.WriteLine($"   → No change needed (already correct)");
         }
     }
 }

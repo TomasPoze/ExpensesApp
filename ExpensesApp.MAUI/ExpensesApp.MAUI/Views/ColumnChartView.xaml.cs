@@ -70,23 +70,17 @@ public partial class ColumnChartView : ContentView
     private static void OnItemsChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var view = (ColumnChartView)bindable;
-
         var allExpenses = view.Items;
         var mode = view.FilterMode;
         var date = view.SelectedDate;
 
         if (allExpenses == null) return;
 
-        // 1. Group & Sum Data (Same logic as PieChart)
-        var currentMonth = DateTime.Now.Month;
-        var currentYear = DateTime.Now.Year;
-
         var processedData = new List<ChartItem>();
 
         if (mode == FilterMode.Year)
         {
             processedData = allExpenses
-                .Where(e => e.Date.Year == date.Year)
                 .GroupBy(e=> e.Date.Month)
                 .OrderBy(g => g.Key)
                 .Select(g => new ChartItem(
@@ -98,7 +92,6 @@ public partial class ColumnChartView : ContentView
         else
         {
             processedData = allExpenses
-                .Where(e => e.Date.Year == date.Year && e.Date.Month == date.Month)
                 .Where(e => mode != FilterMode.Day || e.Date.Day == date.Day)
                 .GroupBy(e=> e.Category)
                 .Select((g,index) => new ChartItem(
