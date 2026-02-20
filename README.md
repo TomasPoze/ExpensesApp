@@ -40,9 +40,9 @@
 
 ExpensesApp is a versatile, cross-platform expense management application built with .NET MAUI, enabling users to track, categorize, and visualize their financial data seamlessly across devices. Its modular architecture combines core models, services, repositories, and API layers to deliver a scalable and maintainable solution.
 
-**Why ExpensesApp?**
+**ExpensesApp Features**
 
-This project helps developers create robust financial apps with ease. The core features include:
+This project includes lots of different features that are used in real world applications:
 
 - 📊 **Visual Data Insights:** Rich pie and column charts for intuitive expense analysis.
 - 🔌 **API Integration:** Secure RESTful endpoints for CRUD operations and real-time data sync.

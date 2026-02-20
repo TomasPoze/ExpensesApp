@@ -38,7 +38,7 @@ public class ApiAccountRepository : IAccountRepository
     }
 
 
-    public async Task<Account?> GetAccountAsync(int id)
+    public async Task<Account?> GetAccountAsync(Guid id)
     {
         try
         {
@@ -73,7 +73,7 @@ public class ApiAccountRepository : IAccountRepository
         await _httpClient.PutAsJsonAsync($"{_baseUrl}/accounts/{account.Id}", account);
     }
 
-    public async Task DeleteAccountAsync(int id)
+    public async Task DeleteAccountAsync(Guid id)
     {
         await _httpClient.DeleteAsync($"{_baseUrl}/accounts/{id}");
     }

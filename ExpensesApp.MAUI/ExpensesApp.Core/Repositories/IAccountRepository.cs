@@ -7,8 +7,8 @@ namespace ExpensesApp.Core.Repositories;
 public interface IAccountRepository
 {
     Task<List<Account>> GetAccountAsync();
-    Task<Account?> GetAccountAsync(int id);
+    Task<Account?> GetAccountAsync(Guid id);
     Task<Account> AddAccountAsync(Account account);
     Task UpdateAccountAsync(Account account);
-    Task DeleteAccountAsync(int id);
+    Task DeleteAccountAsync(Guid id);
 }

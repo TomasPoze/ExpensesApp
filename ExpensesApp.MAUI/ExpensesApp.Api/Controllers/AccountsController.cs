@@ -23,7 +23,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Account>> GetAccount(int id)
+    public async Task<ActionResult<Account>> GetAccount(Guid id)
     {
         var account = await _context.Accounts.FindAsync(id);
 

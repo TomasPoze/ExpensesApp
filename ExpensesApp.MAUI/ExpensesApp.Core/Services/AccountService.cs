@@ -13,7 +13,7 @@ public class AccountService
     private readonly IAccountRepository _repository;
     
 
-    public AccountService(AccountValidator accountValidator, AccountRepository accountRepository, IAccountRepository repo)
+    public AccountService(AccountValidator accountValidator, IAccountRepository repo)
     {
         _accountValidator = accountValidator;
         _repository = repo;
@@ -24,7 +24,7 @@ public class AccountService
         return await _repository.GetAccountAsync();
     }
 
-    public async Task<Account?> GetAccountAsync(int id)
+    public async Task<Account?> GetAccountAsync(Guid id)
     {
         return await _repository.GetAccountAsync(id);
     }
@@ -62,7 +62,7 @@ public class AccountService
         }
     }
     
-    public async Task<(bool Success, string Message)> DeleteAccountAsync(int id)
+    public async Task<(bool Success, string Message)> DeleteAccountAsync(Guid id)
     {
         try
         {

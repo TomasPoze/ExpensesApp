@@ -30,7 +30,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<AddExpensePageModel>();
         builder.Services.AddSingleton<AddExpensePage>();
-        builder.Services.AddSingleton<AccountRepository>();
         builder.Services.AddScoped<AccountService>();
         builder.Services.AddTransient<AccountValidator>();
         builder.Services.AddSingleton<AccountController>();

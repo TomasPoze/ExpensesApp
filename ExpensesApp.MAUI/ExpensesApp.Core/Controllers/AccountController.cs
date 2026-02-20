@@ -30,7 +30,7 @@ public class AccountController
         return await _service.UpdateAccountAsync(account);
     }
 
-    public async Task<(bool Success, string Message)> DeleteAccountAsync(int id)
+    public async Task<(bool Success, string Message)> DeleteAccountAsync(Guid id)
     {
         return await _service.DeleteAccountAsync(id);
     }
